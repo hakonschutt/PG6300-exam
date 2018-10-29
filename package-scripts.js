@@ -16,6 +16,12 @@ module.exports = {
     start: {
       description: "Run production server",
       default: "node index.js"
+    },
+    test: {
+      description: "Run all tests",
+      default: concurrent.nps("frontend", "server"),
+      frontend: "npm run test --prefix frontend",
+      server: "npm run test --prefix server"
     }
   }
 };
