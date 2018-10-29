@@ -1,0 +1,37 @@
+{
+  "name": "PG6300-exam",
+  "description": "Web development and api exam",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hakonschutt/PG6300-exam.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hakonschutt/PG6300-exam/issues"
+  },
+  "homepage": "https://web-api-exam.herokuapp.com/",
+  "keywords": [
+    "react",
+    "react.js",
+    "redux",
+    "node",
+    "node.js"
+  ],
+  "files": [
+    "frontend",
+    "nginx",
+    "server"
+  ],
+  "scripts": {
+    "postinstall": "nps install",
+    "start": "nps start",
+    "test": "nps test"
+  },
+  "devDependencies": {
+    "nps": "^5.9.3",
+    "nps-utils": "^1.7.0"
+  }
+}
