@@ -1,0 +1,21 @@
+env:
+  browser: true
+  es6: true
+extends:
+  - 'airbnb-base'
+rules:
+  brace-style:
+    - error
+    - stroustrup
+  comma-dangle:
+    - warn
+    - never
+  no-unused-vars:
+    - warn
+  linebreak-style:
+    - warn
+    - unix
+  quotes:
+    - single
+  semi:
+    - always
