@@ -1,5 +1,5 @@
 {
-  "name": "PG6300-exam",
+  "name": "PG6300",
   "description": "Web development and api exam",
   "version": "1.0.0",
   "main": "index.js",
@@ -26,9 +26,12 @@
     "server"
   ],
   "scripts": {
-    "postinstall": "nps install",
     "start": "nps start",
     "test": "nps test"
+  },
+  "dependencies": {
+    "@PG6300/frontend": "file:frontend",
+    "@PG6300/server": "file:server"
   },
   "devDependencies": {
     "nps": "^5.9.3",
