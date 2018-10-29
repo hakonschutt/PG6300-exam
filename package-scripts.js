@@ -8,21 +8,14 @@ module.exports = {
     fresh: {
       description: "clean the project before delievery",
       default: series(
-        rimraf("node_modules"),
         rimraf("server/node_modules"),
-        rimraf("frontend/node_modules")
-      )
-    },
-    install: {
-      description: "Install all dependencies",
-      default: concurrent(
-        "npm install --prefix client",
-        "npm install --prefix server"
+        rimraf("frontend/node_modules"),
+        rimraf("node_modules")
       )
     },
     start: {
       description: "Run production server",
-      defult: "node index.js"
+      default: "node index.js"
     }
   }
 };
