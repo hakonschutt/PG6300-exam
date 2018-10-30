@@ -13,4 +13,9 @@ const devConfig = {
   }
 }
 
+if (process.env.NODE_ENV === 'docker') {
+  devConfig.devServer.host = '0.0.0.0';
+}
+
+
 module.exports = merge.smart(baseConfig, devConfig);

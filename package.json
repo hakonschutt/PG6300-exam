@@ -32,7 +32,9 @@
     "validate": "nps validate",
     "build": "nps build",
     "start": "nps start",
-    "test": "nps test"
+    "test": "nps test",
+    "dev": "docker-compose up --build -V",
+    "dev:down": "docker-compose down"
   },
   "dependencies": {
     "nps": "^5.9.3",

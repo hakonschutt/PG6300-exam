@@ -59,6 +59,10 @@ class Server {
    * @return this
    */
   withRoutes() {
+    this.app.get('/api/', (req, res) => {
+      res.send({ hello: 'test' });
+    });
+
     return this;
   }
 

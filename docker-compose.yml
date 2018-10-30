@@ -27,7 +27,7 @@ services:
       - /app/node_modules
       - ./server:/app
     environment:
-      - NODE_ENV=development
+      - NODE_ENV=docker
       - API_KEY=HMK3IYufW9QZN2B3stGJbClTzmDgGGRIAaIYQWsQYosgRsMoP7
       - REDIS_URL=redis://redis:6379
       - DATABASE_URL=postgresql://postgres:postgres_pass@postgres/examdb
@@ -43,7 +43,7 @@ services:
       - /app/node_modules
       - ./frontend:/app
     environment:
-      - NODE_ENV=development
+      - NODE_ENV=docker
       - API_KEY=HMK3IYufW9QZN2B3stGJbClTzmDgGGRIAaIYQWsQYosgRsMoP7
     depends_on:
       - api
