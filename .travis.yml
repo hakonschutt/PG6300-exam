@@ -13,7 +13,7 @@ cache:
     - frontend/node_modules
     - server/node_modules
 install:
-  - npm installss
+  - npm install
 script:
   - npm run test
 deploy:
