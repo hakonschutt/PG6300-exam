@@ -3,12 +3,6 @@ const series = npsUtils.series;
 const rimraf = npsUtils.rimraf;
 const concurrent = npsUtils.concurrent;
 
-// {
-//   default: series.nps('setup.frontend.install', 'setup.frontend.build'),
-//   install: 'npm install --prefix frontend --silent',
-//   build: 'npm run build --prefix frontend'
-// },
-
 module.exports = {
   scripts: {
     publish: {
