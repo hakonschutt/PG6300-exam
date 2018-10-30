@@ -7,6 +7,9 @@ extends:
   - 'plugin:react/recommended'
 plugins:
   - react
+settings:
+  react:
+    version: 'latest'
 rules:
   indent:
     - warn

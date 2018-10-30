@@ -6,9 +6,10 @@
   "scripts": {
     "clean": "nps fresh",
     "build": "nps build",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint src/**/*.js",
-    "dev": "nps dev"
+    "publish": "nps publish",
+    "test": "nps test",
+    "dev": "nps dev",
+    "dev:watch": "nps dev.watch"
   },
   "author": "",
   "license": "ISC",

@@ -26,8 +26,9 @@
     "server"
   ],
   "scripts": {
-    "postinstall": "npm install --prefix frontend && npm install --prefix server",
-    "clean": "nps fresh",
+    "postinstall": "nps setup",
+    "publish": "nps publish",
+    "clean": "nps publish",
     "start": "nps start",
     "test": "nps test"
   },
