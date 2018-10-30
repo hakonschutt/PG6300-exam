@@ -34,7 +34,7 @@ module.exports = {
       description: "Run production server",
       default: series.nps('start.build', 'start.server'),
       build: 'npm run build --prefix frontend',
-      server: 'node index.js'
+      server: 'NODE_ENV=production node server/index.js'
     }
   }
 };

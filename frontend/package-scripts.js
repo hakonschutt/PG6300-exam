@@ -26,7 +26,7 @@ module.exports = {
     build: {
       description: 'Build project',
       default: series.nps('fresh.code', 'build.code'),
-      code: 'webpack --progress --config webpack/webpack.prod.config.js'
+      code: 'NODE_ENV=production webpack --progress --config webpack/webpack.prod.config.js'
     },
     test: {
       description: 'Run tests',

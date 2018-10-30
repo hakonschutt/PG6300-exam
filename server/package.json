@@ -27,5 +27,8 @@
   "jest": {
     "testEnvironment": "node",
     "testRegex": "tests/.*\\.test\\.js$"
+  },
+  "dependencies": {
+    "express": "^4.16.4"
   }
 }

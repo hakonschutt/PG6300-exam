@@ -5,10 +5,7 @@ const baseConfig = require('./webpack.base.config');
 const optimizationConfig = require('./webpack.opt.config');
 
 const productionConfiguration = {
-  mode: process.env.NODE_ENV,
-  output: {
-    publicPath: 'public/'
-  }
+  mode: process.env.NODE_ENV
 }
 
 module.exports = merge.smart(baseConfig, optimizationConfig, productionConfiguration);

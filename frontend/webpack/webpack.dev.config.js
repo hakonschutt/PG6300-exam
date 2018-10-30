@@ -4,9 +4,6 @@ const baseConfig = require('./webpack.base.config');
 
 const devConfig = {
   mode: 'development',
-  output: {
-    publicPath: '/'
-  },
   devServer: {
     historyApiFallback: true,
     contentBase: "src/",
