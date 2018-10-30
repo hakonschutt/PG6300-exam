@@ -36,7 +36,7 @@
     "@PG6300/frontend": "file:frontend",
     "@PG6300/server": "file:server"
   },
-  "devDependencies": {
+  "dependencies": {
     "nps": "^5.9.3",
     "nps-utils": "^1.7.0"
   }
