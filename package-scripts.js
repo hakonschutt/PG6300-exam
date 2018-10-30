@@ -18,6 +18,12 @@ module.exports = {
       frontend: 'npm install --prefix frontend --silent',
       server: 'npm install --prefix server --silent'
     },
+    validate: {
+      description: "Validate setup for frontend and server",
+      default: concurrent.nps('validate.frontend', 'validate.server'),
+      frontend: 'npm run validate --prefix frontend',
+      server: 'npm run validate --prefix server'
+    },
     test: {
       description: "Run all tests",
       default: concurrent.nps("test.frontend", "test.server"),
