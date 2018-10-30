@@ -15,7 +15,11 @@ module.exports = {
     setup: {
       description: "Install all dependencies and run build setup",
       default: concurrent.nps('setup.frontend', 'setup.server'),
-      frontend: 'npm install --prefix frontend --silent',
+      frontend: {
+        default: series.nps('setup.frontend.install', 'setup.frontend.build'),
+        install: 'npm install --prefix frontend --silent',
+        build: 'npm run build --prefix frontend'
+      },
       server: 'npm install --prefix server --silent'
     },
     validate: {
@@ -32,9 +36,7 @@ module.exports = {
     },
     start: {
       description: "Run production server",
-      default: series.nps('start.build', 'start.server'),
-      build: 'npm run build --prefix frontend',
-      server: 'NODE_ENV=production node server/index.js'
+      default: 'node server/index.js'
     }
   }
 };
