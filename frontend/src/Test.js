@@ -1,7 +1,12 @@
+// @flow
 import React from 'react';
 
-const Test = () => {
-	return <h1>test</h1>;
+type Props = {
+	name: string
+}
+
+const Test = ({ name }: Props) => {
+	return <h1>{name}</h1>;
 };
 
 export default Test;

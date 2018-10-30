@@ -12,20 +12,21 @@ module.exports = {
       dependencies: rimraf('node_modules'),
       coverage: rimraf('coverage')
     },
-    check: {
+    validate: {
       description: 'Checks project for errors and warnings',
-      default: concurrent.nps('check.lint', 'check.test'),
-      lint: 'eslint .',
+      default: series.nps('validate.lint', 'validate.flow', 'validate.test'),
+      lint: 'eslint . --quiet',
+      flow: 'flow check',
       test: 'jest'
     },
     prepublish: {
       description: 'Executes checks before publishing',
-      default: series.nps('check', 'fresh')
+      default: series.nps('validate', 'fresh')
     },
     build: {
       description: 'Build project',
       default: series.nps('fresh.code', 'build.code'),
-      code: 'NODE_ENV=production webpack --progress --config webpack/webpack.prod.config.js'
+      code: 'webpack --progress --config webpack/webpack.prod.config.js'
     },
     test: {
       description: 'Run tests',

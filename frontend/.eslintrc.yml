@@ -18,8 +18,8 @@ rules:
     - warn
     - unix
   quotes:
-    - error
+    - warn
     - single
   semi:
-    - error
+    - warn
     - always

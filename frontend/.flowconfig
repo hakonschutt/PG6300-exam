@@ -1,0 +1,17 @@
+[ignore]
+./coverage/.*
+./node_modules/.*
+./public/.*
+./web/.*
+./webpack/.*
+
+[include]
+
+[libs]
+flow-typed
+
+[lints]
+
+[options]
+
+[strict]
