@@ -3,6 +3,12 @@ const series = npsUtils.series;
 const rimraf = npsUtils.rimraf;
 const concurrent = npsUtils.concurrent;
 
+// {
+//   default: series.nps('setup.frontend.install', 'setup.frontend.build'),
+//   install: 'npm install --prefix frontend --silent',
+//   build: 'npm run build --prefix frontend'
+// },
+
 module.exports = {
   scripts: {
     publish: {
@@ -15,11 +21,7 @@ module.exports = {
     setup: {
       description: "Install all dependencies and run build setup",
       default: concurrent.nps('setup.frontend', 'setup.server'),
-      frontend: {
-        default: series.nps('setup.frontend.install', 'setup.frontend.build'),
-        install: 'npm install --prefix frontend --silent',
-        build: 'npm run build --prefix frontend'
-      },
+      frontend: 'npm install --prefix frontend --silent',
       server: 'npm install --prefix server --silent'
     },
     validate: {
@@ -33,6 +35,10 @@ module.exports = {
       default: concurrent.nps("test.frontend", "test.server"),
       frontend: "npm run test --prefix frontend",
       server: "npm run test --prefix server"
+    },
+    build: {
+      description: "Validate setup for frontend and server",
+      default: 'npm run build --prefix frontend'
     },
     start: {
       description: "Run production server",

@@ -26,9 +26,11 @@
     "server"
   ],
   "scripts": {
+    "heroku-postbuild": "npm run build",
     "postinstall": "nps setup",
     "publish": "nps publish",
     "validate": "nps validate",
+    "build": "nps build",
     "start": "nps start",
     "test": "nps test"
   },
