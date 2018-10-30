@@ -7,9 +7,10 @@ module.exports = {
   scripts: {
     fresh: {
       description: "clean the project before delievery",
-      default: concurrent.nps('fresh.code', 'fresh.dependencies'),
+      default: concurrent.nps('fresh.code', 'fresh.dependencies', 'fresh.coverage'),
       code: rimraf('public'),
-      dependencies: rimraf('node_modules')
+      dependencies: rimraf('node_modules'),
+      coverage: rimraf('coverage')
     },
     check: {
       description: 'Checks project for errors and warnings',
@@ -28,10 +29,10 @@ module.exports = {
     },
     test: {
       description: 'Run tests',
-      default: 'jest -- --coverage',
+      default: 'jest --coverage',
       watch: {
         description: 'Run tests in watch mode',
-        default: 'jest -- --watch'
+        default: 'jest --watch'
       }
     },
     dev: {
@@ -39,7 +40,7 @@ module.exports = {
       default: 'webpack-dev-server --progress --config webpack/webpack.dev.config.js',
       watch: {
         description: 'Run dev server in watch mode with tests',
-        default: concurrent.nps('dev', 'dev.test.watch')
+        default: concurrent.nps('dev', 'test.watch')
       }
     }
   }
