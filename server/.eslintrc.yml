@@ -5,7 +5,7 @@ extends:
   - 'airbnb-base'
 rules:
   brace-style:
-    - error
+    - warn
     - stroustrup
   comma-dangle:
     - warn
@@ -16,6 +16,8 @@ rules:
     - warn
     - unix
   quotes:
+    - warn
     - single
   semi:
+    - warn
     - always

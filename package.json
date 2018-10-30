@@ -28,7 +28,6 @@
   "scripts": {
     "postinstall": "nps setup",
     "publish": "nps publish",
-    "clean": "nps publish",
     "start": "nps start",
     "test": "nps test"
   },

@@ -7,7 +7,7 @@ module.exports = {
   scripts: {
     publish: {
       description: "clean the project before delievery",
-      default: concurrent.nps('fresh.frontend', 'fresh.server', 'fresh.parent'),
+      default: concurrent.nps('publish.frontend', 'publish.server', 'publish.parent'),
       frontend: 'npm run clean --prefix frontend',
       server: 'npm run clean --prefix server',
       parent: rimraf('node_modules')

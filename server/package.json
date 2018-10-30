@@ -4,14 +4,28 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "clean": "echo \"TEST\" && exit 0"
+    "clean": "nps fresh",
+    "publish": "nps prepublish",
+    "validate": "nps validate",
+    "test": "nps test",
+    "test:watch": "nps test.watch",
+    "dev": "nps dev",
+    "dev:watch": "nps dev.watch"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "eslint": "^5.8.0",
     "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-plugin-import": "^2.14.0"
+    "eslint-plugin-import": "^2.14.0",
+    "jest": "^23.6.0",
+    "moxios": "^0.4.0",
+    "nps": "^5.9.3",
+    "nps-utils": "^1.7.0",
+    "supertest": "^3.3.0"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "testRegex": "tests/.*\\.test\\.js$"
   }
 }
