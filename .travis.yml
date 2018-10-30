@@ -20,4 +20,4 @@ deploy:
   provider: heroku
   api_key: $HEROKU_SECRET_KEY
   app:
-    master: my-app-staging
+    master: web-api-exam
