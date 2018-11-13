@@ -2,7 +2,7 @@
   "name": "PG6300",
   "description": "Web development and api exam",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "server/index.js",
   "author": "",
   "license": "ISC",
   "repository": {

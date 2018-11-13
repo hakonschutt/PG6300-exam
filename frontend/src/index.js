@@ -1,4 +1,13 @@
+import '@assets/sass/main.scss';
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-ReactDOM.render(<h1>test</h1>, document.getElementById('app-root'));
+import Root from '@root/Root';
+
+ReactDOM.render(
+	<Root>
+		<h1>Dette er en test</h1>
+	</Root>,
+	document.getElementById('app-root')
+);

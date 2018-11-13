@@ -12,6 +12,19 @@ module.exports = {
     path: path.join(__dirname, "..", "public"),
     publicPath: '/'
   },
+  resolve: {
+    alias: {
+      '@actions': path.resolve('src/actions'),
+      '@assets': path.resolve('src/assets'),
+      '@components': path.resolve('src/components'),
+      '@containers': path.resolve('src/containers'),
+      '@elements': path.resolve('src/elements'),
+      '@hocs': path.resolve('src/hocs'),
+      '@reducers': path.resolve('src/reducers'),
+      '@utils': path.resolve('src/utils'),
+      '@root': path.resolve('src')
+    }
+  },
   module: {
     rules: [
       {
