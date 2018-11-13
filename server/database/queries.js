@@ -40,7 +40,16 @@ module.exports = {
   findUserById: `
     SELECT * FROM users WHERE user_id = $1
   `,
+  findUserByEmail: `
+    SELECT * FROM users WHERE email = $1
+  `,
   findAllUsers: `
     SELECT * FROM users
+  `,
+  updateUser: `
+    UPDATE users SET name = $2, email = $3, password = $4 WHERE id = $1 returning name
+  `,
+  deleteUserById: `
+    DELETE FROM users WHERE id = $1 returning id
   `
 };

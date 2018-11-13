@@ -6,13 +6,14 @@ module.exports = {
       const oldUser = await User.findAll();
 
       if (oldUser.length < 1) {
-        const user = await new User({
-          name: 'Hakon Schutt',
-          email: 'hakon@schutt.no',
-          password: 'heisann'
+        await new User({
+          name: 'John doe',
+          email: 'john@doe.no',
+          password: 'admin'
         }).save();
       }
-    } catch (err) {
+    }
+    catch (err) {
       console.log("ERROR:", err);
     }
   }
