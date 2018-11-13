@@ -6,6 +6,8 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres_pass
       - POSTGRES_DB=examdb
+    ports:
+      - '5432:5432'
   redis:
     image: 'redis:latest'
   nginx:

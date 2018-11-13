@@ -30,6 +30,16 @@
     "testRegex": "tests/.*\\.test\\.js$"
   },
   "dependencies": {
-    "express": "^4.16.4"
+    "axios": "^0.18.0",
+    "bcrypt-nodejs": "0.0.3",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "express-session": "^1.15.6",
+    "passport": "^0.4.0",
+    "passport-custom": "^1.0.5",
+    "passport-local": "^1.0.0",
+    "pg": "^7.6.1",
+    "pg-camelcase": "0.0.3",
+    "socket.io": "^2.1.1"
   }
 }

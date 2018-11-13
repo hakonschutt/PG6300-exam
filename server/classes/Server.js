@@ -1,5 +1,6 @@
-const express = require("express");
+const express = require('express');
 const path = require('path');
+const Database = require('../database/Database');
 
 class Server {
   constructor() {
@@ -51,6 +52,8 @@ class Server {
    * @return this
    */
   withPostgres() {
+    Database.build();
+
     return this;
   }
 
@@ -68,7 +71,6 @@ class Server {
 
   withStaticServe() {
     if (['production', 'staging'].includes(process.env.NODE_ENV)) {
-      console.log("Hello pepps");
       this.app.use(express.static('frontend/public'));
       this.app.get('*', (req, res) => {
         res.sendFile(path.resolve(__dirname, '..', '..', 'frontend', 'public', 'index.html'));
