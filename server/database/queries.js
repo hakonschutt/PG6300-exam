@@ -79,6 +79,9 @@ module.exports = {
   findQuestionById: `
     SELECT * FROM questions WHERE question_id = $1
   `,
+  findQustionsByQuizId: `
+    SELECT * FROM questions WHERE quiz_id = $1 LIMIT $2 OFFSET $3 ORDER BY order_in_quiz ASC
+  `,
   findAllQuestions: `
     SELECT * FROM questions
   `,
@@ -87,8 +90,7 @@ module.exports = {
     SET question = $2,
         answers = $3,
         correct_index = $4,
-        order_in_quiz = $5,
-        quiz_id = $6
+        order_in_quiz = $5
     WHERE question_id = $1
   `,
   deleteQuestionById: `
