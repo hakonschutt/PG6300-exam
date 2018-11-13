@@ -17,6 +17,7 @@ module.exports = {
       '@actions': path.resolve('src/actions'),
       '@assets': path.resolve('src/assets'),
       '@components': path.resolve('src/components'),
+      '@constants': path.resolve('src/constants'),
       '@containers': path.resolve('src/containers'),
       '@elements': path.resolve('src/elements'),
       '@hocs': path.resolve('src/hocs'),

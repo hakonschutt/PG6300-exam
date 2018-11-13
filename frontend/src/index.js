@@ -3,11 +3,12 @@ import '@assets/sass/main.scss';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Root from '@root/Root';
+import Root from '@constants/Root';
+import AppRoutes from '@constants/AppRoutes';
 
 ReactDOM.render(
 	<Root>
-		<h1>Dette er en test</h1>
+		<AppRoutes />
 	</Root>,
 	document.getElementById('app-root')
 );
