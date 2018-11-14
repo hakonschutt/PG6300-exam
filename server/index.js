@@ -1,12 +1,11 @@
-const Server = require('./classes/Server');
+const initExpress = require('./config/express');
 
-new Server()
-  .withBodyParser()
-  .withCors()
-  .withMorgan()
-  .withCookieParser()
-  .withPassport()
-  .withPostgres()
-  .withRoutes()
-  .withStaticServe()
-  .listen();
+const app = initExpress();
+
+const PORT = process.env.PORT || 5000;
+
+/* eslint-disable */
+app.listen(PORT, () => {
+  console.log(`Listening on port ${PORT}`);
+});
+/* eslint-enable */

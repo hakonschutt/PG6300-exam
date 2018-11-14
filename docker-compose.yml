@@ -31,6 +31,7 @@ services:
     environment:
       - NODE_ENV=docker
       - API_KEY=HMK3IYufW9QZN2B3stGJbClTzmDgGGRIAaIYQWsQYosgRsMoP7
+      - SESSION_KEY=EfaDTruu9arRwDf036lf2KEc7kjptep62KE78I56tD7rGyk1ZF
       - REDIS_URL=redis://redis:6379
       - DATABASE_URL=postgresql://postgres:postgres_pass@postgres/examdb
     depends_on:
