@@ -1,0 +1,13 @@
+@import 'global/reset';
+@import 'global/mixin';
+@import 'global/theme';
+@import 'global/common';
+
+html {
+  body {
+    overflow-x: hidden;
+    /* import components */
+
+    /* import containers */
+  }
+}
