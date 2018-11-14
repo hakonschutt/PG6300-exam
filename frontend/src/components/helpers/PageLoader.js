@@ -4,7 +4,9 @@ import { PacmanLoader } from 'react-spinners';
 const PageLoader = () => {
 	return (
 		<div className="page-loader">
-			<PacmanLoader className="loader" color="#000000" loading={true} />
+			<div className="center">
+				<PacmanLoader className="loader" color="#f05f50" loading={true} />
+			</div>
 		</div>
 	);
 };

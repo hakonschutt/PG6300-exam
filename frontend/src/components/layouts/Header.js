@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import { Logo } from '@assets/images';
 import { NavList } from '@components';
@@ -8,7 +9,9 @@ const Header = () => {
 		<header role="page-header">
 			<div className="wrap hpad">
 				<div className="left-side">
-					<Logo />
+					<Link to="/">
+						<Logo />
+					</Link>
 				</div>
 				<div className="right-side">
 					<nav role="page-navigation">

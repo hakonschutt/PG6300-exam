@@ -1,26 +1,28 @@
 $brand-colors: (
-  primary: #9CB380,
-  secondary: #94A89A,
-  tertiary: #D4E09B
+	primary: #4ebd9e,
+	secondary: #2aa0da,
+	tertiary: #f05f50,
+	fourth: #e1e6e8,
+	fifth: #183651,
 );
 
 $base-colors: (
-  black: #000000,
-  white: #ffffff
+	black: #000000,
+	white: #ffffff,
 );
 
 $UI-colors: (
-  negative: #ef8181,
-  positive: #90d8b0,
-  warning: #f9dd8c,
-  active: #7cb8fe
+	negative: #ef8181,
+	positive: #90d8b0,
+	warning: #f9dd8c,
+	active: #7cb8fe,
 );
 
 $shades-of-grey: (
-  dark-grey: #1f2d3d,
-  grey: #778f9b,
-  light-grey: #b8c1cb,
-  snow: #dde2e8
+	dark-grey: #1f2d3d,
+	grey: #778f9b,
+	light-grey: #b8c1cb,
+	snow: #dde2e8,
 );
 
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,700,900');

@@ -1,0 +1,14 @@
+footer[role='page-footer'] {
+	display: block;
+	height: 80px;
+	background-color: map-get($brand-colors, primary);
+
+	.wrap {
+		.center-text {
+			display: block;
+			text-align: center;
+			line-height: 80px;
+			color: map-get($base-colors, white);
+		}
+	}
+}

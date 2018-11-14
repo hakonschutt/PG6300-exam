@@ -3,7 +3,11 @@ import React from 'react';
 const Footer = () => {
 	return (
 		<footer role="page-footer">
-			<h1>Footer</h1>
+			<div className="wrap hpad">
+				<div className="center-text">
+					<span>Copyright © {new Date().getFullYear()}</span>
+				</div>
+			</div>
 		</footer>
 	);
 };

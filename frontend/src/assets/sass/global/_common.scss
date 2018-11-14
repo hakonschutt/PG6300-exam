@@ -1,0 +1,197 @@
+/********************GLOBAL********************/
+
+* {
+	box-sizing: border-box;
+
+	&:after,
+	&:before {
+		box-sizing: border-box;
+	}
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	font-family: $default-font;
+}
+
+body {
+	min-height: 100vh;
+}
+
+main {
+	position: relative;
+	z-index: 20;
+	display: block;
+	height: 100%;
+	min-height: calc(100vh - 140px);
+	padding: 0 1rem;
+}
+
+.loadpage {
+	display: block;
+
+	&-inner {
+		padding-top: 4rem;
+
+		.css-w8j3nq {
+			display: block;
+			margin: 0 auto;
+			height: 70px;
+			width: 70px;
+		}
+	}
+}
+
+img {
+	height: auto;
+	max-width: 100%;
+}
+
+.wrap,
+.contain,
+.constrain {
+	margin-left: auto;
+	margin-right: auto;
+	width: 100%;
+	word-wrap: break-word;
+}
+
+.wrap {
+	max-width: 1024px;
+}
+
+.content-wrap {
+	max-width: 1024px;
+}
+
+.contain {
+	max-width: 700px;
+}
+
+.constrain {
+	max-width: 450px;
+}
+
+.hpad {
+	padding-left: 1rem;
+	padding-right: 1rem;
+
+	@include wider-than(tablet) {
+		padding-left: 2rem;
+		padding-right: 2rem;
+	}
+}
+
+.left {
+	text-align: left;
+}
+
+.center {
+	text-align: center;
+}
+
+.right {
+	text-align: right;
+}
+
+.aligncenter {
+	margin: 1rem auto;
+	clear: both;
+}
+
+.halign {
+	@include halign;
+}
+
+.valign {
+	@include valign;
+}
+
+.hvalign {
+	@include hvalign;
+}
+
+.clearfix:before,
+.clearfix:after {
+	content: ' '; /* 1 */
+	display: table; /* 2 */
+}
+
+.clearfix:after {
+	clear: both;
+}
+
+.btn {
+	display: block;
+	margin: 0 auto;
+	width: auto;
+	border-radius: 25px;
+	line-height: 1;
+	padding: 0;
+	font-size: 0.875rem;
+	cursor: pointer;
+	border: none;
+	text-decoration: none !important;
+	height: 46px;
+	min-width: 120px;
+
+	&:focus,
+	&:active {
+		outline: none;
+	}
+
+	div {
+		height: 25px;
+		width: 25px;
+	}
+}
+
+.env-banner {
+	display: block;
+	position: fixed;
+	width: 200px;
+	background: #e43;
+	text-align: center;
+	line-height: 30px;
+	letter-spacing: 1px;
+	color: #f0f0f0;
+	top: 30px;
+	left: -55px;
+	transform: rotate(-45deg);
+	-webkit-transform: rotate(-45deg);
+	box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
+	background: #e43;
+	z-index: 200;
+
+	h5 {
+		font-size: 0.6rem;
+		margin: 0;
+	}
+
+	@include wider-than(tablet) {
+		line-height: 40px;
+		top: 25px;
+		left: -50px;
+
+		h5 {
+			font-size: 0.9rem;
+		}
+	}
+}
+
+.page-loader {
+	display: block;
+	height: 100%;
+	width: 100%;
+	min-height: calc(100vh - 140px);
+
+	.center {
+		height: 50px;
+		width: 50px;
+		@include hvalign;
+		position: absolute;
+	}
+}

@@ -4,10 +4,14 @@
 @import 'global/common';
 
 html {
-  body {
-    overflow-x: hidden;
-    /* import components */
+	body {
+		overflow-x: hidden;
+		/* import components */
+		@import 'components/header';
+		@import 'components/footer';
 
-    /* import containers */
-  }
+		/* import containers */
+
+		/* import elements */
+	}
 }
