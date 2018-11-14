@@ -1,5 +1,6 @@
 const passport = require('passport');
 const User = require('../database/models/User');
+const passportService = require('../services/Passport');
 
 const initPassport = (app) => {
   passport.serializeUser((user, done) => {
@@ -15,6 +16,9 @@ const initPassport = (app) => {
       done(null, false);
     }
   });
+
+  passport.use('apikey', passportService.apiKeyStrategy);
+  passport.use('login', passportService.loginStrategy);
 
   app.use(passport.initialize());
   app.use(passport.session());

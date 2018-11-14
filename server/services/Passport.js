@@ -1,19 +1,21 @@
-const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const CustomStrategy = require('passport-custom');
 
 const keys = require('../config/keys');
 const User = require('../database/models/User');
 
-const apiKeyStrategy = new CustomStrategy((req, done) => {
+exports.apiKeyStrategy = new CustomStrategy((req, done) => {
   const { auth } = req.headers;
   const isMatch = auth && auth === keys.globalApiKey;
 
   return done(null, isMatch);
 });
 
-const loginStrategy = new LocalStrategy(
-  { usernameField: 'email' },
+exports.loginStrategy = new LocalStrategy(
+  {
+    usernameField: 'email',
+    passwordField: 'password'
+  },
   async (email, password, done) => {
     try {
       const user = await User.findByEmail(email);
@@ -26,6 +28,3 @@ const loginStrategy = new LocalStrategy(
     }
   }
 );
-
-passport.use('login', loginStrategy);
-passport.use('apikey', apiKeyStrategy);

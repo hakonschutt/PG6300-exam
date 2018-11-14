@@ -13,7 +13,7 @@ const initRoutes = (app) => {
   app.use('/api/v1/quizzes', initQuizRoutes());
 
   if (['production', 'staging'].includes(process.env.NODE_ENV)) {
-    app.use(express.static('frontend/public'));
+    app.use(express.static('public'));
 
     app.get('*', (req, res) => {
       res.sendFile(path.resolve(__dirname, '..', '..', 'frontend', 'public', 'index.html'));
