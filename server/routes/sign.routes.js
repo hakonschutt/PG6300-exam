@@ -5,8 +5,8 @@ require('../services/Passport');
 const Authentication = require('../services/Authentication');
 const requireUser = require('../middlewares/requireUser');
 
-const requireUserSignin = passport.authenticate('login', { session: false });
-const requireApiKey = passport.authenticate('apikey', { session: false });
+const requireUserSignin = passport.authenticate('login');
+const requireApiKey = passport.authenticate('apikey');
 
 const initSignRoutes = () => {
   const router = express.Router();

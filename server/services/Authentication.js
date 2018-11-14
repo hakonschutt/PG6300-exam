@@ -2,11 +2,11 @@ const passport = require('passport');
 const User = require('../database/models/User');
 
 exports.signin = (req, res) => {
-  req.session.save((err) => {
+  req.session.save(async (err) => {
     if (err) {
       return res.status(422).send(err);
     }
-
+    await req.login(req.user);
     return res.status(204).send();
   });
 };

@@ -2,17 +2,21 @@ const Database = require('../Database');
 const queries = require('../queries');
 
 class Quiz {
-  constructor({ quizId = null, title, numberOfPlayers = 4 }) {
+  constructor({
+    quizId = null, title, numberOfPlayers = 4, ownerId = null, published = false
+  }) {
     this.quizId = quizId;
     this.title = title;
     this.numberOfPlayers = numberOfPlayers;
+    this.ownerId = ownerId;
+    this.published = published;
   }
 
   async save() {
     try {
       const { rows } = await Database.query(
         queries.insertNewQuiz,
-        [this.title, this.numberOfPlayers]
+        [this.title, this.numberOfPlayers, this.ownerId, this.published]
       );
 
       this.quizId = rows[0].quizId;
@@ -23,12 +27,12 @@ class Quiz {
     }
   }
 
-  async update({ title = null, numberOfPlayers = null }) {
+  async update({ title = null, numberOfPlayers = null, published = null }) {
     if (!this.quizId) {
       throw new Error('You need to save the quiz before it can be updated');
     }
 
-    if (!title && !numberOfPlayers) {
+    if (!title && !numberOfPlayers && !published) {
       throw new Error('You need to include a title or number of players');
     }
 
@@ -41,9 +45,13 @@ class Quiz {
         this.numberOfPlayers = numberOfPlayers;
       }
 
+      if (published) {
+        this.published = published;
+      }
+
       await Database.query(
         queries.updateQuiz,
-        [this.quizId, this.title, this.numberOfPlayers]
+        [this.quizId, this.title, this.numberOfPlayers, this.published]
       );
 
       return this;
@@ -66,13 +74,27 @@ class Quiz {
     }
   }
 
-  static async findAll() {
+  static async findAll({ limit = 20, offset = 0 }) {
     try {
-      const { rows } = await Database.query(queries.findAllQuizzes);
+      const { rows } = await Database.query(queries.findAllQuizzes, [limit, offset]);
       return rows.map(row => new Quiz(row));
     }
     catch (err) {
       throw new Error('An issu occured. Try again later');
+    }
+  }
+
+  static async findByUserId(userId, { limit = 20, offset = 0 }) {
+    try {
+      const { rows } = await Database.query(
+        queries.findQuizByUserId,
+        [userId, limit, offset]
+      );
+
+      return rows.map(row => new Quiz(row));
+    }
+    catch (err) {
+      throw new Error('An issue occured. Try again later');
     }
   }
 

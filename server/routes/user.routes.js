@@ -1,16 +1,19 @@
 const passport = require('passport');
 const express = require('express');
-require('../services/Passport');
 
-const requireApiKey = passport.authenticate('apikey', { session: false });
+const requireUser = require('../middlewares/requireUser');
+const userHandler = require('../handlers/user.handler');
+
+const requireApiKey = passport.authenticate('apikey');
 
 const initUserRoutes = () => {
   const router = express.Router();
 
   router
-    .route('/:id')
+    .route('/current')
     .get(requireApiKey)
-    .get();
+    .get(requireUser)
+    .get(userHandler.getCurrentUser);
 
   return router;
 };

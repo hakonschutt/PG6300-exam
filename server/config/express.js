@@ -1,6 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const session = require('express-session');
+const uuid = require('uuid/v4')
+const FileStore = require('session-file-store')(session);
 
 const keys = require('./keys');
 const initRoutes = require('../routes/routes');
@@ -14,6 +16,9 @@ const initExpress = () => {
   app.use(bodyParser.json());
 
   app.use(session({
+    genid: () => uuid(),
+    store: new FileStore(),
+    cookie: { maxAge: 60 * 60 * 1000 },
     secret: keys.sessionKey,
     resave: false,
     saveUninitialized: false

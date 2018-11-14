@@ -84,9 +84,9 @@ class Question {
     }
   }
 
-  static async findAll() {
+  static async findAll({ limit = 10, offset = 0 }) {
     try {
-      const { rows } = await Database.query(queries.findAllQuestions);
+      const { rows } = await Database.query(queries.findAllQuestions, [limit, offset]);
       return rows.map(row => new Question(row));
     }
     catch (err) {

@@ -3,13 +3,11 @@ const path = require('path');
 
 const initSignRoutes = require('./sign.routes');
 const initUserRoutes = require('./user.routes');
-const initQuestionRoutes = require('./question.routes');
 const initQuizRoutes = require('./quiz.routes');
 
 const initRoutes = (app) => {
   app.use('/api/v1/sign', initSignRoutes());
   app.use('/api/vi/users', initUserRoutes());
-  app.use('/api/v1/questions', initQuestionRoutes());
   app.use('/api/v1/quizzes', initQuizRoutes());
 
   if (['production', 'staging'].includes(process.env.NODE_ENV)) {
