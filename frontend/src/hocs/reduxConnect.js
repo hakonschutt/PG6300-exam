@@ -9,8 +9,8 @@ function mapStateToProps(state) {
 const reduxConnect = (
 	WrappedComponent,
 	actions = appActions,
-	state = mapStateToProps) => {
-
+	state = mapStateToProps
+) => {
 	return connect(
 		state,
 		actions

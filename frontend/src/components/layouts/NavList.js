@@ -1,12 +1,13 @@
 import React from 'react';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 type Props = {
 	user: Object,
 };
 
-const NavList = ({ user = { isAuthenticated: false } }: Props) => {
+const NavList = ({ user }: Props) => {
 	let navList;
 
 	if (user && user.isAuthenticated) {
@@ -39,4 +40,8 @@ const NavList = ({ user = { isAuthenticated: false } }: Props) => {
 	});
 };
 
-export default NavList;
+function mapStateToProps({ user }) {
+	return { user };
+}
+
+export default connect(mapStateToProps)(NavList);
