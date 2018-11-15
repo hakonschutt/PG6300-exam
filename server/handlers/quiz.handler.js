@@ -44,7 +44,8 @@ exports.deleteQuiz = async (req, res) => {
 
     if (deleted) {
       res.status(204).send();
-    } else {
+    }
+    else {
       res.status(400).send();
     }
   }
@@ -78,7 +79,7 @@ exports.updateQuizQuestion = async (req, res) => {
 exports.deleteQuizQuestion = async (req, res) => {
   try {
     await Question.deleteById(req.params.questionId);
-    
+
     res.status(200).send();
   }
   catch (err) {

@@ -6,12 +6,13 @@
 html {
 	body {
 		overflow-x: hidden;
+		/* import elements */
+
 		/* import components */
 		@import 'components/header';
 		@import 'components/footer';
 
 		/* import containers */
-
-		/* import elements */
+		@import 'containers/not-found-page';
 	}
 }

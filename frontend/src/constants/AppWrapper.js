@@ -1,17 +1,13 @@
 // @flow
 import React from 'react';
 
-import {
-	Header,
-	Footer,
-	EnvBanner
-} from '@components';
+import { Header, Footer, EnvBanner } from '@components';
 
 type Props = {
-	children: Object
+	children: Object,
 };
 
-const AppWrapper = ({ children } : Props ) => {
+const AppWrapper = ({ children }: Props) => {
 	return (
 		<div>
 			<EnvBanner />

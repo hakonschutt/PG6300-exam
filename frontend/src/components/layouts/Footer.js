@@ -5,7 +5,7 @@ const Footer = () => {
 		<footer role="page-footer">
 			<div className="wrap hpad">
 				<div className="center-text">
-					<span>Copyright © {new Date().getFullYear()}</span>
+					<span>Copyright © {new Date().getFullYear()}, WOACT</span>
 				</div>
 			</div>
 		</footer>

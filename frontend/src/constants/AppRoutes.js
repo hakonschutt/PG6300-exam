@@ -33,6 +33,10 @@ class AppRoutes extends Component {
 							component={loadablePage(() => import('@containers/LogoutPage'))}
 						/>
 						<Route
+							path="/signup"
+							component={loadablePage(() => import('@containers/SignupPage'))}
+						/>
+						<Route
 							exact
 							path="/games"
 							component={loadablePage(() => import('@containers/GamesPage'))}
