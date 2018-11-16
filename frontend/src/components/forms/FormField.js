@@ -1,4 +1,5 @@
 import React from 'react';
+import classNames from 'classnames';
 
 type Props = {
 	input: Object,
@@ -8,14 +9,14 @@ type Props = {
 };
 
 const FormField = ({ input, type, label, meta: { error, touched } }: Props) => {
-	const classNames = `form-group ${
-		touched && error
-			? 'has-danger'
-			: `${touched && !error ? 'has-completed' : ''}`
-	}`;
+	const className = classNames('form-group', {
+		'has-danger': touched && error,
+		'has-completed': touched && !error,
+		'has-simple': !touched,
+	});
 
 	return (
-		<div className={classNames}>
+		<div className={className}>
 			<label>{label}</label>
 			<div className="input-wrap">
 				<input

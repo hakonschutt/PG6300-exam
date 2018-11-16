@@ -7,7 +7,7 @@ const initQuizRoutes = require('./quiz.routes');
 
 const initRoutes = (app) => {
   app.use('/api/v1/sign', initSignRoutes());
-  app.use('/api/vi/users', initUserRoutes());
+  app.use('/api/v1/users', initUserRoutes());
   app.use('/api/v1/quizzes', initQuizRoutes());
 
   if (['production', 'staging'].includes(process.env.NODE_ENV)) {

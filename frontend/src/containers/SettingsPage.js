@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { requireLoggedInUser } from '@hocs';
+
 const SettingsPage = () => {
 	return (
 		<div className="landing-page wrap hpad">
@@ -10,4 +12,4 @@ const SettingsPage = () => {
 	);
 };
 
-export default SettingsPage;
+export default requireLoggedInUser(SettingsPage);

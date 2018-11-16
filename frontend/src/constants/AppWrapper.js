@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 
-import { Header, Footer, EnvBanner } from '@components';
+import { Header, Footer, EnvBanner, PopupModal } from '@components';
 
 type Props = {
 	children: Object,
@@ -14,6 +14,7 @@ const AppWrapper = ({ children }: Props) => {
 			<Header />
 			<main>{children}</main>
 			<Footer />
+			<PopupModal />
 		</div>
 	);
 };

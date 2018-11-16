@@ -1,9 +1,25 @@
 import axios from 'axios';
-import { FETCH_USER, SIGNUP_USER, LOGIN_USER, LOGOUT_USER } from './types';
+import {
+	FETCH_USER,
+	SIGNUP_USER,
+	LOGIN_USER,
+	LOGOUT_USER,
+	UPDATE_USER_INFO,
+} from './types';
+
+export const updateUserInfo = (data, cb) => async dispatch => {
+	try {
+		await axios.patch('/api/v1/users/current', data);
+		dispatch({ type: UPDATE_USER_INFO, payload: data });
+		return cb(null);
+	} catch (err) {
+		return cb({ error: 'Could not update information' });
+	}
+};
 
 export const fetchUser = () => async dispatch => {
 	try {
-		const res = await axios.get('/api/vi/users/current');
+		const res = await axios.get('/api/v1/users/current');
 
 		dispatch({ type: FETCH_USER, payload: res.data });
 	} catch (err) {
