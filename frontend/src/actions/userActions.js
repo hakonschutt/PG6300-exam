@@ -4,7 +4,7 @@ import { keyedHeader } from '@utils';
 
 export const fetchUser = () => async dispatch => {
 	try {
-		const res = await axios.get('/api/v1/users/current', keyedHeader);
+		const res = await axios.get('/api/vi/users/current', keyedHeader);
 		dispatch({ type: FETCH_USER, payload: res.data });
 	} catch (err) {
 		dispatch({ type: FETCH_USER, payload: null });

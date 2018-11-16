@@ -7,11 +7,16 @@ import {
 } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { loadablePage } from '@hocs';
+import { fetchUser } from '@actions';
 import AppWrapper from '@constants/AppWrapper';
 
-class AppRoutes extends Component {
+type Props = {
+	fetchUser: Function,
+};
+
+class AppRoutes extends Component<Props, *> {
 	componentDidMount() {
-		// TODO: Implement a fetch user call
+		this.props.fetchUser();
 	}
 
 	render() {
@@ -76,4 +81,7 @@ class AppRoutes extends Component {
 	}
 }
 
-export default connect(null)(AppRoutes);
+export default connect(
+	null,
+	{ fetchUser }
+)(AppRoutes);
