@@ -3,6 +3,7 @@ import { reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
+import { requireLoggedOutUser } from '@hocs';
 import { formValidation } from '@utils';
 import { FormBuilder } from '@components';
 import { signupUser } from '@actions';
@@ -104,5 +105,5 @@ export default reduxForm({
 	connect(
 		null,
 		{ signupUser }
-	)(withRouter(SignupPage))
+	)(withRouter(requireLoggedOutUser(SignupPage)))
 );

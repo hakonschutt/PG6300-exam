@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+
+import { userRedirect } from '@hocs';
 import { Questions } from '@assets/images';
 
 const LandingPage = () => {
@@ -44,4 +46,4 @@ const LandingPage = () => {
 	);
 };
 
-export default LandingPage;
+export default userRedirect(LandingPage);
