@@ -10,13 +10,13 @@ export default function(ComposedComponent) {
 
 	class RequireLoggedOutUser extends Component<Props, *> {
 		componentDidMount() {
-			if (this.props.user && this.props.user.isAuthenticated) {
+			if (this.props.user.isAuthenticated) {
 				this.props.history.push('/404');
 			}
 		}
 
 		componentWillUpdate(nextProps) {
-			if (nextProps.user && nextProps.user.isAuthenticated) {
+			if (nextProps.user.isAuthenticated) {
 				this.props.history.push('/404');
 			}
 		}

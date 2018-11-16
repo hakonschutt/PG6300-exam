@@ -10,13 +10,13 @@ export default function(ComposedComponent) {
 
 	class RequireLoggedInUser extends Component<Props, *> {
 		componentDidMount() {
-			if (!this.props.user || !this.props.user.is_active) {
+			if (!this.props.user.isAuthenticated) {
 				this.props.history.push('/404');
 			}
 		}
 
 		componentWillUpdate(nextProps) {
-			if (!nextProps.user || !nextProps.user.is_active) {
+			if (!nextProps.user.isAuthenticated) {
 				this.props.history.push('/404');
 			}
 		}

@@ -58,7 +58,7 @@ class SignupPage extends Component<Props, *> {
 
 		signupUser(values, error => {
 			if (error) {
-				this.setState({ error, loading: false });
+				this.setState({ ...error, loading: false });
 			} else {
 				history.push('/settings');
 			}

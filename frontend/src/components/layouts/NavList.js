@@ -4,13 +4,13 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 type Props = {
-	user: Object,
+	isAuthenticated: Boolean,
 };
 
-const NavList = ({ user }: Props) => {
+const NavList = ({ isAuthenticated }: Props) => {
 	let navList;
 
-	if (user && user.isAuthenticated) {
+	if (isAuthenticated) {
 		navList = [
 			{ key: 'games', to: '/games', text: 'Games' },
 			{ key: 'quizzes', to: '/quizzes', text: 'Quizzes' },
@@ -41,7 +41,7 @@ const NavList = ({ user }: Props) => {
 };
 
 function mapStateToProps({ user }) {
-	return { user };
+	return { isAuthenticated: user.isAuthenticated };
 }
 
 export default connect(mapStateToProps)(NavList);

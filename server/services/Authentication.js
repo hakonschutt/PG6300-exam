@@ -1,4 +1,3 @@
-const passport = require('passport');
 const User = require('../database/models/User');
 
 exports.signin = (req, res) => {
@@ -6,8 +5,10 @@ exports.signin = (req, res) => {
     if (err) {
       return res.status(422).send(err);
     }
-    await req.login(req.user);
-    return res.status(204).send();
+
+    delete req.user.password;
+
+    return res.status(200).send({ ...req.user, isAuthenticated: req.isAuthenticated() });
   });
 };
 
@@ -19,9 +20,12 @@ exports.signup = async (req, res, next) => {
   }
 
   try {
-    await User.findByEmail(email);
-    await new User({ name, email, password }).save();
+    const old = await User.findByEmail(email);
+    if (old) {
+      throw new Error('User already exists');
+    }
 
+    await new User({ name, email, password }).save();
     return next();
   }
   catch (err) {
@@ -30,6 +34,13 @@ exports.signup = async (req, res, next) => {
 };
 
 exports.logout = (req, res) => {
-  req.logout();
-  res.status(204).send();
+  req.session.destroy((err) => {
+    if (err) {
+      res.status(500).send();
+    }
+    else {
+      res.status(204).send();
+      req.logout();
+    }
+  });
 };

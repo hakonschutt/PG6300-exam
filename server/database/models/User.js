@@ -39,10 +39,11 @@ class User {
   async save() {
     try {
       await this.hashPassword();
-      const { rows } = await Database.query(
-        queries.insertNewUser,
-        [this.name, this.email, this.password]
-      );
+      const { rows } = await Database.query(queries.insertNewUser, [
+        this.name,
+        this.email,
+        this.password
+      ]);
 
       this.userId = rows[0].userId;
       return this;
@@ -75,10 +76,7 @@ class User {
         await this.hashPassword();
       }
 
-      await Database.query(
-        queries.updateUser,
-        [this.userId, this.name, this.email, this.password]
-      );
+      await Database.query(queries.updateUser, [this.userId, this.name, this.email, this.password]);
 
       return this;
     }
@@ -91,7 +89,7 @@ class User {
     try {
       const { rows } = await Database.query(queries.findUserById, [id]);
 
-      if (rows.length < 1) throw new Error();
+      if (rows.length < 1) return null;
 
       return new User(rows[0]);
     }
@@ -104,7 +102,7 @@ class User {
     try {
       const { rows } = await Database.query(queries.findUserByEmail, [email]);
 
-      if (rows.length < 1) throw new Error();
+      if (rows.length < 1) return null;
 
       return new User(rows[0]);
     }
