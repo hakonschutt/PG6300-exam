@@ -11,9 +11,11 @@ html {
 		/* import components */
 		@import 'components/header';
 		@import 'components/footer';
+		@import 'components/forms/form-builder';
 
 		/* import containers */
 		@import 'containers/not-found-page';
 		@import 'containers/landing-page';
+		@import 'containers/login-page';
 	}
 }

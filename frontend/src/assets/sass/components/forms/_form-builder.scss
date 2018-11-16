@@ -1,0 +1,6 @@
+.form-wrap {
+	form {
+		@import 'form-field';
+		@import 'form-button';
+	}
+}

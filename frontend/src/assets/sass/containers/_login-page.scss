@@ -1,0 +1,23 @@
+.login-page {
+	display: block;
+
+	.contain {
+		min-height: calc(100vh - 140px);
+		max-width: 350px;
+		padding: 0;
+
+		.options-list {
+			@include valign;
+			position: absolute;
+			width: 350px;
+
+			h1 {
+				display: block;
+				text-align: center;
+				font-size: 2.5rem;
+				margin-bottom: 2rem;
+				color: map-get($base-colors, white);
+			}
+		}
+	}
+}
