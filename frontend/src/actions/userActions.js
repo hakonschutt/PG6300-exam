@@ -1,5 +1,11 @@
 import axios from 'axios';
-import { FETCH_USER, LOGIN_USER, LOGOUT_USER, UPDATE_USER_INFO } from './types';
+import {
+	FETCH_USER,
+	SIGNUP_USER,
+	LOGIN_USER,
+	LOGOUT_USER,
+	UPDATE_USER_INFO,
+} from './types';
 import { keyedHeader } from '@utils';
 
 export const fetchUser = () => async dispatch => {
@@ -32,6 +38,24 @@ export const loginUser = ({ email, password }, cb) => async dispatch => {
 			keyedHeader
 		);
 		dispatch({ type: LOGIN_USER, payload: res.data });
+		return cb(null);
+	} catch (err) {
+		return cb({ error: err });
+	}
+};
+
+export const signupUser = ({ name, email, password }, cb) => async dispatch => {
+	if (!name || !email || !password)
+		return cb({ error: 'You need to inklude a name, an email and password' });
+
+	try {
+		const res = await axios.post(
+			'/api/v1/sign/up',
+			{ name, email, password },
+			keyedHeader
+		);
+
+		dispatch({ type: SIGNUP_USER, payload: res.data });
 		return cb(null);
 	} catch (err) {
 		return cb({ error: err });
