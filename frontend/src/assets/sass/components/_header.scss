@@ -1,7 +1,8 @@
 header[role='page-header'] {
 	display: block;
 	height: 60px;
-	background-color: map-get($brand-colors, secondary);
+	background-color: map-get($base-colors, white);
+	border-bottom: 2px solid map-get($brand-colors, secondary);
 
 	.wrap {
 		.left-side {
@@ -36,12 +37,13 @@ header[role='page-header'] {
 						line-height: 40px;
 						padding: 0 1rem;
 						display: block;
-						color: map-get($base-colors, white);
+						color: map-get($brand-colors, secondary);
 						text-decoration: none;
 					}
 
 					&.action a {
 						background-color: map-get($brand-colors, primary);
+						color: map-get($base-colors, white);
 						box-shadow: 0 5px 20px rgba(25, 17, 34, 0.1);
 						border-radius: 5px;
 						padding: 0 1.5rem;

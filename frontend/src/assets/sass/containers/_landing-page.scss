@@ -1,0 +1,81 @@
+.landing-page {
+	display: block;
+
+	.top-banner {
+		display: block;
+		background-color: map-get($base-colors, white);
+		padding: 2rem 0;
+
+		.wrap {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+
+			.left-info {
+				width: calc(100% - 450px);
+				color: map-get($brand-colors, primary);
+
+				h1 {
+					font-size: 3rem;
+					margin-bottom: 1rem;
+				}
+
+				p {
+					font-size: 1.25rem;
+					line-height: 1.4rem;
+				}
+
+				.button-wrap {
+					margin-top: 1rem;
+					display: block;
+
+					a {
+						display: block;
+						height: 50px;
+						width: 200px;
+						line-height: 50px;
+						text-align: center;
+						background-color: map-get($brand-colors, secondary);
+						text-decoration: none;
+						color: map-get($base-colors, white);
+					}
+				}
+			}
+
+			.right-image {
+				width: 400px;
+
+				.image-wrap {
+					width: 300px;
+					height: 300px;
+					background-color: map-get($brand-colors, primary);
+					border-radius: 50%;
+
+					svg {
+						margin: 50px 60px;
+						height: 200px;
+						width: 200px;
+					}
+				}
+			}
+		}
+	}
+
+	.info-center {
+		.contain {
+			color: map-get($base-colors, white);
+			text-align: center;
+
+			h2 {
+				margin: 2rem 0;
+				display: block;
+				font-size: 2.5rem;
+			}
+
+			p {
+				font-size: 1.25rem;
+				line-height: 1.4rem;
+			}
+		}
+	}
+}
