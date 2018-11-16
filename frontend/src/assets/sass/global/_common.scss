@@ -182,6 +182,19 @@ img {
 	}
 }
 
+.global-alert {
+	display: block;
+	padding: 14px 10px;
+	border-radius: 5px;
+	color: map-get($base-colors, white);
+	min-height: 50px;
+	font-size: 18px;
+	line-height: 24px;
+	position: relative;
+	margin: 0.5rem 0;
+	background-color: map-get($UI-colors, negative);
+}
+
 .page-loader {
 	display: block;
 	height: 100%;

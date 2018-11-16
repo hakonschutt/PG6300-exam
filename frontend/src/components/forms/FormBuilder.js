@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Field } from 'redux-form';
-import { FormField, FormButton } from '@components';
+import { FormField, Alert, FormButton } from '@components';
 
 type Props = {
 	formMount: Function,
@@ -19,10 +19,11 @@ class FormBuilder extends Component<Props, *> {
 	}
 
 	render() {
-		const { onSubmit, loading, buttonText } = this.props;
+		const { onSubmit, error, loading, buttonText } = this.props;
 
 		return (
 			<div className="form-wrap">
+				<Alert error={error} />
 				<form onSubmit={onSubmit}>
 					{this.props.formFields.map(({ name, label, type }) => (
 						<Field

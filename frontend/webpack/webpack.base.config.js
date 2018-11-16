@@ -61,7 +61,8 @@ module.exports = {
     new HtmlWebPackPlugin({
       minify: true,
       title: "PG6300",
-      template: path.join(__dirname, "..", "web", "index.html")
+      template: path.join(__dirname, "..", "web", "index.html"),
+      favicon: path.join(__dirname, "..", "web", "favicon.ico")
     }),
     new webpack.DefinePlugin({
       "process.env": {
