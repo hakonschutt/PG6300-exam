@@ -5,3 +5,5 @@ export { default as NavList } from '@components/layouts/NavList';
 export { default as UserSettings } from '@components/layouts/UserSettings';
 export { default as PageHeader } from '@components/layouts/PageHeader';
 export { default as QuizzesList } from '@components/layouts/QuizzesList';
+export { default as GamesList } from '@components/layouts/GamesList';
+export { default as PageAlert } from '@components/layouts/PageAlert';

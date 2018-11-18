@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ActiveGamePage = () => {
+const ActiveMatchPage = () => {
 	return (
 		<div className="landing-page wrap hpad">
 			<div className="options-list">
@@ -10,4 +10,4 @@ const ActiveGamePage = () => {
 	);
 };
 
-export default ActiveGamePage;
+export default ActiveMatchPage;

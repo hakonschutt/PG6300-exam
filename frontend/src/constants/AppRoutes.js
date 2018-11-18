@@ -43,19 +43,14 @@ class AppRoutes extends Component<Props, *> {
 						/>
 						<Route
 							exact
-							path="/games"
-							component={loadablePage(() => import('@containers/GamesPage'))}
+							path="/match"
+							component={loadablePage(() => import('@containers/MatchPage'))}
 						/>
 						<Route
-							path="/games/:socketId"
+							path="/match/:socketId"
 							component={loadablePage(() =>
-								import('@containers/ActiveGamePage')
+								import('@containers/ActiveMatchPage')
 							)}
-						/>
-						<Route
-							exact
-							path="/quizzes"
-							component={loadablePage(() => import('@containers/QuizzesPage'))}
 						/>
 						<Route
 							path="/quizzes/new"

@@ -1,0 +1,47 @@
+.games-list {
+	display: block;
+
+	ul {
+		display: flex;
+		flex-wrap: nowrap;
+		justify-content: space-around;
+
+		.list-item {
+			width: 23%;
+			height: auto;
+			padding: 1rem;
+			background-color: map-get($base-colors, white);
+
+			.game-info {
+				display: block;
+
+				label {
+					display: block;
+					font-size: 0.8rem;
+					color: map-get($shades-of-grey, grey);
+				}
+
+				h4 {
+					margin: 0.5rem 0;
+					line-height: 1.8rem;
+					display: block;
+					font-size: 1.5rem;
+				}
+
+				h5 {
+					margin: 0.5rem 0;
+					font-size: 1.25rem;
+				}
+			}
+
+			a {
+				margin-top: 1.5rem;
+				background-color: map-get($brand-colors, primary);
+				line-height: 46px;
+				text-align: center;
+				color: map-get($base-colors, white);
+				display: block;
+			}
+		}
+	}
+}

@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { fetchQuizzes } from '@actions';
+import { fetchQuizzes, setPopup } from '@actions';
 import { PageHeader, QuizzesList, Alert } from '@components';
 
 type Props = {
 	quizzes: Object,
 	fetchQuizzes: Function,
+	setPopup: Function,
 };
 
 class QuizzesPage extends Component<Props, *> {
@@ -21,7 +22,7 @@ class QuizzesPage extends Component<Props, *> {
 	}
 
 	onSingleClick(info) {
-		console.log(info);
+		this.props.setPopup({ component: 'start-game', info });
 	}
 
 	render() {
@@ -53,5 +54,5 @@ function mapStateToProps({ quizzes }) {
 
 export default connect(
 	mapStateToProps,
-	{ fetchQuizzes }
+	{ fetchQuizzes, setPopup }
 )(QuizzesPage);

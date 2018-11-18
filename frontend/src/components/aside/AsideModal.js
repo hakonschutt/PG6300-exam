@@ -7,7 +7,7 @@ import ModalBuilder from '@components/aside/ModalBuilder';
 import { Cross } from '@assets/images';
 
 const transitionOptions = {
-	transitionName: 'popup',
+	transitionName: 'aside',
 	transitionEnterTimeout: 500,
 	transitionLeaveTimeout: 500,
 };
@@ -19,9 +19,9 @@ type Props = {
 
 const AsideModal = ({ aside, closeAside }: Props) => {
 	return (
-		<ReactCSSTransitionGroup {...transitionOptions} className="popup-modal">
+		<ReactCSSTransitionGroup {...transitionOptions} className="aside-modal">
 			{aside && (
-				<div className="popup-module">
+				<div className="aside-module">
 					<div className="overlay" onClick={closeAside} />
 					<div className={`inner ${aside}`}>
 						<div className="close-icon" onClick={closeAside}>

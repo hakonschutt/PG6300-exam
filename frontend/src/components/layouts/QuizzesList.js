@@ -12,8 +12,10 @@ const QuizzesList = ({ quizzes = [], onClick, buttonText }: Props) => {
 			<ul>
 				{quizzes.map(quiz => (
 					<li key={quiz.quizId} className="list-item">
-						<span>{quiz.title}</span>
-						<a onClick={() => onClick(quiz)}>{buttonText}</a>
+						<div className="list-item-inner">
+							<span>{quiz.title}</span>
+							<a onClick={() => onClick(quiz)}>{buttonText}</a>
+						</div>
 					</li>
 				))}
 			</ul>

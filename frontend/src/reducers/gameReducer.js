@@ -5,7 +5,7 @@ const defaultState = { error: null, list: [] };
 export default function(state = defaultState, action) {
 	switch (action.type) {
 	case FETCH_GAMES:
-		return { ...state, list: [...state.list, ...action.payload] };
+		return { ...state, list: action.payload };
 	case CREATE_GAME:
 		return { ...state, list: [action.payload, ...state.list] };
 	case SET_GAMES_ERROR:

@@ -1,5 +1,5 @@
-.popup-modal {
-	.popup-module {
+.aside-modal {
+	.aside-module {
 		display: block;
 		position: fixed;
 		top: 0;
@@ -28,26 +28,49 @@
 			z-index: 12;
 			background-color: map-get($brand-colors, primary);
 			position: absolute;
+			right: 0;
 			width: 85%;
-			max-width: 400px;
 			height: auto;
 			color: map-get($base-colors, white);
-			min-height: 200px;
-			height: auto;
+			min-height: 100vh;
+			height: 100vh;
 			overflow: hidden;
 			overflow-y: auto;
-			border-radius: 8px;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
+			max-width: 500px;
+			padding: 2rem 1rem;
 
-			.wrap {
-				width: 100%;
+			&-mobile-close {
+				cursor: pointer;
+				width: 15px;
 				height: 100%;
-				padding: 1rem;
+				background-color: red;
+				position: absolute;
+				top: 0;
+				left: 0;
+				background-color: rgba(map-get($brand-colors, primary), 0.4);
 
-				h3 {
-					margin-top: 0;
+				@include wider-than(tablet) {
+					width: 25px;
+				}
+
+				@include wider-than(laptop) {
+					display: none;
+				}
+			}
+
+			&-text-wrap {
+				width: calc(100% - 15px);
+				margin-left: 15px;
+
+				@include wider-than(tablet) {
+					width: calc(100% - 25px);
+					margin-left: 25px;
+				}
+
+				@include wider-than(laptop) {
+					width: 100%;
+					margin: 0;
+					padding: 0;
 				}
 			}
 
@@ -72,48 +95,75 @@
 					margin: 17px;
 				}
 			}
+
+			&.name-settings,
+			&.email-settings,
+			&.password-settings {
+				h2 {
+					font-size: 2rem;
+					margin: 1rem 0;
+				}
+
+				.current {
+					display: block;
+					font-size: 1.2rem;
+				}
+
+				form {
+					display: block;
+					margin-top: 1rem;
+
+					.has-simple .input-wrap input {
+						border: 2px solid transparent;
+					}
+
+					.form-button {
+						background-color: map-get($brand-colors, secondary);
+					}
+				}
+			}
 		}
 
-		&.popup-enter {
+		&.aside-enter {
 			.overlay {
 				background-color: rgba(map-get($shades-of-grey, grey), 0);
 			}
 
 			.inner {
-				top: -100%;
+				right: -100%;
 			}
 		}
 
-		&.popup-enter-active {
+		&.aside-enter-active {
 			.overlay {
 				background-color: rgba(map-get($shades-of-grey, grey), 0.4);
 				transition: 0.5s ease-in all;
 			}
 
 			.inner {
-				top: 50%;
+				right: 0;
 				transition: 0.5s ease-in all;
 			}
 		}
 
-		&.popup-leave {
+		&.aside-leave {
 			.overlay {
 				background-color: rgba(map-get($shades-of-grey, grey), 0.4);
 			}
 
 			.inner {
-				top: 50%;
+				right: 0;
 			}
 		}
 
-		&.popup-leave-active {
+		&.aside-leave-active {
 			.overlay {
-				background-color: rgba(map-get($brand-colors, tertiary), 0);
+				background-color: rgba(map-get($shades-of-grey, grey), 0);
 				transition: 0.5s ease-in all;
 			}
 
 			.inner {
-				top: -100%;
+				right: -100%;
 				transition: 0.5s ease-in all;
 			}
 		}

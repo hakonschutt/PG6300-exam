@@ -5,6 +5,19 @@ export const LOGIN_USER = 'login_user';
 export const LOGOUT_USER = 'logout_user';
 export const UPDATE_USER_INFO = 'update_user_info';
 
+// POPUP ACTIONS
+export const CLOSE_POPUP = 'close_popup';
+export const SET_POPUP = 'set_popup';
+
+// ASIDE ACTIONS
+export const CLOSE_ASIDE = 'close_aside';
+export const SET_ASIDE = 'set_aside';
+
+// ALERT ACTIONS
+export const SET_GLOBAL_ALERT = 'set_global_alert';
+export const REMOVE_GLOBAL_ALERT = 'remove_global_alert';
+
+// MIGHT REMOVE v
 // GAME ACTIONS
 export const FETCH_GAMES = 'fetch_games';
 export const CREATE_GAME = 'create_game';
@@ -15,11 +28,3 @@ export const FETCH_QUIZZES = 'fetch_quizzes';
 export const FETCH_USER_QUIZZES = 'fetch_user_quizzes';
 export const CREATE_QUIZ = 'create_quiz';
 export const SET_QUIZZES_ERROR = 'set_quizzes_error';
-
-// POPUP ACTIONS
-export const CLOSE_POPUP = 'close_popup';
-export const SET_POPUP = 'set_popup';
-
-// ASIDE ACTIONS
-export const CLOSE_ASIDE = 'close_aside';
-export const SET_ASIDE = 'set_aside';

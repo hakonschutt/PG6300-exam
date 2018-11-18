@@ -12,10 +12,9 @@ const NavList = ({ isAuthenticated }: Props) => {
 
 	if (isAuthenticated) {
 		navList = [
-			{ key: 'games', to: '/games', text: 'Games' },
-			{ key: 'quizzes', to: '/quizzes', text: 'Quizzes' },
-			{ key: 'settings', to: '/settings', text: 'Settings' },
 			{ key: 'logout', to: '/logout', text: 'Logout' },
+			{ key: 'settings', to: '/settings', text: 'Settings' },
+			{ key: 'match', to: '/match', text: 'Start match' },
 		];
 	} else {
 		navList = [
@@ -29,7 +28,7 @@ const NavList = ({ isAuthenticated }: Props) => {
 			<li
 				key={btn.key}
 				className={classNames('nav-button', {
-					action: btn.key === 'signup',
+					action: btn.key === 'signup' || btn.key === 'match',
 				})}
 			>
 				<Link to={btn.to}>
