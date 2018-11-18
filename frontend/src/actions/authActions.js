@@ -9,8 +9,8 @@ import {
 
 export const updateUserInfo = (data, cb) => async dispatch => {
 	try {
-		await axios.patch('/api/v1/users/current', data);
-		dispatch({ type: UPDATE_USER_INFO, payload: data });
+		const res = await axios.patch('/api/v1/users/current', data);
+		dispatch({ type: UPDATE_USER_INFO, payload: res.data });
 		return cb(null);
 	} catch (err) {
 		return cb({ error: 'Could not update information' });

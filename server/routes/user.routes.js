@@ -1,6 +1,7 @@
 const express = require('express');
 
 const requireUser = require('../middlewares/requireUser');
+const requireUserPassword = require('../middlewares/requireUserPassword');
 const userHandler = require('../handlers/user.handler');
 
 const initUserRoutes = () => {
@@ -8,8 +9,10 @@ const initUserRoutes = () => {
 
   router
     .route('/current')
-    .get(requireUser)
-    .get(userHandler.getCurrentUser);
+    .all(requireUser)
+    .get(userHandler.getCurrentUser)
+    .patch(requireUserPassword)
+    .patch(userHandler.updateCurrentUser);
 
   return router;
 };

@@ -17,7 +17,7 @@ const initExpress = () => {
   app.use(
     session({
       genid: () => uuid(),
-      cookie: { maxAge: 60 * 60 * 1000 },
+      cookie: { maxAge: 5 * 60 * 60 * 1000 },
       secret: keys.sessionKey,
       resave: false,
       saveUninitialized: false
