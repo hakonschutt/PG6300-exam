@@ -7,9 +7,9 @@ export const closePopup = () => {
 	};
 };
 
-export const setPopup = component => {
+export const setPopup = info => {
 	return {
 		type: SET_POPUP,
-		payload: component,
+		payload: info,
 	};
 };

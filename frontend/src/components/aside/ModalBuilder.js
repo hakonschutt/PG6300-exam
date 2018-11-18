@@ -5,11 +5,11 @@ import EmailSettings from './subs/EmailSettings';
 import PasswordSettings from './subs/PasswordSettings';
 
 type Props = {
-	popup: String,
+	aside: String,
 };
 
-const ModalBuilder = ({ popup }: Props) => {
-	switch (popup) {
+const ModalBuilder = ({ aside }: Props) => {
+	switch (aside) {
 	case 'name-settings':
 		return <NameSettings />;
 	case 'email-settings':

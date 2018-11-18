@@ -1,14 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { setPopup } from '@actions';
+import { setAside } from '@actions';
 
 type Props = {
 	user: Object,
-	setPopup: Function,
+	setAside: Function,
 };
 
-const UserSettings = ({ user, setPopup }: Props) => {
+const UserSettings = ({ user, setAside }: Props) => {
 	return (
 		<div className="user-settings">
 			<div className="flex-settings">
@@ -22,9 +22,9 @@ const UserSettings = ({ user, setPopup }: Props) => {
 						<span>Password: ******</span>
 					</div>
 					<div className="button-wrap">
-						<a onClick={() => setPopup('name-settings')}>Change name</a>
-						<a onClick={() => setPopup('email-settings')}>Change email</a>
-						<a onClick={() => setPopup('password-settings')}>Change password</a>
+						<a onClick={() => setAside('name-settings')}>Change name</a>
+						<a onClick={() => setAside('email-settings')}>Change email</a>
+						<a onClick={() => setAside('password-settings')}>Change password</a>
 					</div>
 				</div>
 			</div>
@@ -38,5 +38,5 @@ function mapStateToProps({ user }) {
 
 export default connect(
 	mapStateToProps,
-	{ setPopup }
+	{ setAside }
 )(UserSettings);

@@ -19,3 +19,7 @@ export const SET_QUIZZES_ERROR = 'set_quizzes_error';
 // POPUP ACTIONS
 export const CLOSE_POPUP = 'close_popup';
 export const SET_POPUP = 'set_popup';
+
+// ASIDE ACTIONS
+export const CLOSE_ASIDE = 'close_aside';
+export const SET_ASIDE = 'set_aside';

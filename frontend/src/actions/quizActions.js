@@ -5,10 +5,29 @@ import {
 	SET_QUIZZES_ERROR,
 } from '@actions/types';
 
+const staticQuizzes = [
+	{
+		quizId: 0,
+		title: 'Pub quiz',
+	},
+	{
+		quizId: 1,
+		title: 'Pub quiz',
+	},
+	{
+		quizId: 2,
+		title: 'Pub quiz',
+	},
+	{
+		quizId: 3,
+		title: 'Pub quiz',
+	},
+];
+
 export const fetchQuizzes = () => async dispatch => {
 	dispatch({ type: SET_QUIZZES_ERROR, payload: null });
 	try {
-		dispatch({ type: FETCH_QUIZZES, payload: [] });
+		dispatch({ type: FETCH_QUIZZES, payload: staticQuizzes });
 	} catch (err) {
 		dispatch({ type: SET_QUIZZES_ERROR, payload: 'Could not fetch quizzes' });
 	}

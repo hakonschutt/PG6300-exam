@@ -2,8 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
-import { closePopup } from '@actions';
-import ModalBuilder from '@components/popup/ModalBuilder';
+import { closeAside } from '@actions';
+import ModalBuilder from '@components/aside/ModalBuilder';
 import { Cross } from '@assets/images';
 
 const transitionOptions = {
@@ -12,17 +12,22 @@ const transitionOptions = {
 	transitionLeaveTimeout: 500,
 };
 
-const PopupModal = ({ popup, closePopup }) => {
+type Props = {
+	aside: String,
+	closeAside: Function,
+};
+
+const AsideModal = ({ aside, closeAside }: Props) => {
 	return (
 		<ReactCSSTransitionGroup {...transitionOptions} className="popup-modal">
-			{popup && (
+			{aside && (
 				<div className="popup-module">
-					<div className="overlay" onClick={closePopup} />
-					<div className={`inner ${popup}`}>
-						<div className="close-icon" onClick={closePopup}>
+					<div className="overlay" onClick={closeAside} />
+					<div className={`inner ${aside}`}>
+						<div className="close-icon" onClick={closeAside}>
 							<Cross />
 						</div>
-						<ModalBuilder popup={popup} />
+						<ModalBuilder aside={aside} />
 					</div>
 				</div>
 			)}
@@ -30,11 +35,11 @@ const PopupModal = ({ popup, closePopup }) => {
 	);
 };
 
-function mapStateToProps({ popup }) {
-	return { popup };
+function mapStateToProps({ aside }) {
+	return { aside };
 }
 
 export default connect(
 	mapStateToProps,
-	{ closePopup }
-)(PopupModal);
+	{ closeAside }
+)(AsideModal);

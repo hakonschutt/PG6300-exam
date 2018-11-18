@@ -4,3 +4,4 @@ export { default as EnvBanner } from '@components/layouts/EnvBanner';
 export { default as NavList } from '@components/layouts/NavList';
 export { default as UserSettings } from '@components/layouts/UserSettings';
 export { default as PageHeader } from '@components/layouts/PageHeader';
+export { default as QuizzesList } from '@components/layouts/QuizzesList';
