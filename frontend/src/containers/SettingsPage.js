@@ -1,12 +1,14 @@
 import React from 'react';
 
 import { requireLoggedInUser } from '@hocs';
+import { UserSettings, PageHeader } from '@components';
 
 const SettingsPage = () => {
 	return (
 		<div className="landing-page wrap hpad">
 			<div className="options-list">
-				<h1>SettingsPage</h1>
+				<PageHeader title="Settings" />
+				<UserSettings />
 			</div>
 		</div>
 	);

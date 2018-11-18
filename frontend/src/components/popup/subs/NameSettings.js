@@ -71,8 +71,8 @@ class NameSettings extends Component<Props, *> {
 			<div className="name-settings-inner">
 				<h2>Change name</h2>
 				<div className="current">
-					<label>Current name :</label>
-					<span>{user && user.email}</span>
+					<label>Current name: </label>
+					<span>{user && user.name}</span>
 				</div>
 				<FormBuilder
 					onSubmit={handleSubmit(this.onSubmit.bind(this))}

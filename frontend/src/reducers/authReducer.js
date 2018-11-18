@@ -5,7 +5,12 @@ import {
 	LOGOUT_USER,
 } from '@actions/types';
 
-const defaultState = { isAuthenticated: false };
+const defaultState = {
+	isAuthenticated: true,
+	userId: '83ff1d4d-24db-459a-a2e5-e934ab23b1a3',
+	name: 'John doe',
+	email: 'john@doe.no',
+};
 
 export default function(state = defaultState, action) {
 	switch (action.type) {

@@ -1,0 +1,64 @@
+.user-settings {
+	display: block;
+
+	.flex-settings {
+		display: flex;
+		margin: 1rem 0 2rem 0;
+
+		.header-wrap {
+			width: 200px;
+			position: relative;
+
+			h2 {
+				color: map-get($base-colors, white);
+				font-size: 1.5rem;
+			}
+		}
+
+		&-inner {
+			display: block;
+			padding: 0 1rem;
+			width: calc(100% - 200px);
+			border-left: 1px solid map-get($base-colors, white);
+
+			&.user-setting {
+				display: flex;
+				max-width: 700px;
+
+				.info {
+					width: 100%;
+
+					span {
+						display: block;
+						height: 40px;
+						line-height: 40px;
+						color: map-get($base-colors, white);
+					}
+
+					@include wider-than(mobile) {
+						width: calc(100% - 200px);
+					}
+				}
+
+				.button-wrap {
+					width: 100%;
+					margin-top: 1rem;
+
+					a {
+						display: block;
+						color: map-get($base-colors, white);
+						cursor: pointer;
+						border: none;
+						height: 40px;
+						line-height: 40px;
+					}
+
+					@include wider-than(mobile) {
+						width: 200px;
+						margin: 0;
+					}
+				}
+			}
+		}
+	}
+}

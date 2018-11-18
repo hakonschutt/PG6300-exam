@@ -71,7 +71,7 @@ class EmailSettings extends Component<Props, *> {
 			<div className="email-settings-inner">
 				<h2>Change Email</h2>
 				<div className="current">
-					<label>Current email:</label>
+					<label>Current email: </label>
 					<span>{user && user.email}</span>
 				</div>
 				<FormBuilder
