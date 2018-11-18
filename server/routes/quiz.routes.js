@@ -16,14 +16,7 @@ const initQuizRoutes = () => {
     .route('/:id')
     .all(requireUser)
     .post(quizHandler.createQuizQuestion)
-    .patch(quizHandler.updateQuiz)
     .delete(quizHandler.deleteQuiz);
-
-  router
-    .route('/:quizId/:questionId')
-    .all(requireUser)
-    .patch(quizHandler.updateQuizQuestion)
-    .delete(quizHandler.deleteQuizQuestion);
 
   return router;
 };

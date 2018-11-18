@@ -34,7 +34,6 @@ module.exports = {
     CREATE TABLE IF NOT EXISTS quizzes (
       quiz_id             uuid                DEFAULT       uuid_generate_v4(),
       title               varchar(255)        NOT NULL,
-      number_of_players   int                 DEFAULT       4,
       user_id             uuid                NOT NULL,
       published           BOOLEAN             DEFAULT       false,
 
@@ -43,7 +42,7 @@ module.exports = {
     )
   `,
   insertNewQuiz: `
-    INSERT INTO quizzes (title, number_of_players, user_id, published) VALUES ($1, $2, $3, $4) returning quiz_id
+    INSERT INTO quizzes (title, user_id, published) VALUES ($1, $2, $3) returning quiz_id
   `,
   findQuizById: `
     SELECT * FROM quizzes WHERE quiz_id = $1
@@ -55,7 +54,7 @@ module.exports = {
     SELECT * FROM quizzes WHERE user_id = $1 LIMIT $2 OFFSET $3
   `,
   updateQuiz: `
-    UPDATE quizzes SET title = $2, number_of_players = $3, published = $4 WHERE quiz_id = $1
+    UPDATE quizzes SET title = $2, published = $3 WHERE quiz_id = $1
   `,
   deleteQuizById: `
     DELETE FROM quizzes WHERE quiz_id = $1 returning quiz_id

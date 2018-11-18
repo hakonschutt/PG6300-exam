@@ -1,13 +1,21 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const QuizzesPage = () => {
-	return (
-		<div className="landing-page wrap hpad">
-			<div className="options-list">
-				<h1>QuizzesPage</h1>
+import { PageHeader } from '@components';
+
+class QuizzesPage extends Component {
+	componentDidMount() {}
+
+	render() {
+		return (
+			<div className="landing-page">
+				<div className="wrap hpad">
+					<div className="options-list">
+						<PageHeader title="Quizzes" />
+					</div>
+				</div>
 			</div>
-		</div>
-	);
-};
+		);
+	}
+}
 
 export default QuizzesPage;

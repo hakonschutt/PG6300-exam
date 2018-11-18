@@ -15,24 +15,24 @@ class Question {
 
   async save() {
     try {
-      const { rows } = await Database.query(
-        queries.insertNewQuestion,
-        [this.question, this.answers, this.correctIndex, this.quizId, this.order]
-      );
+      const { rows } = await Database.query(queries.insertNewQuestion, [
+        this.question,
+        this.answers,
+        this.correctIndex,
+        this.order,
+        this.quizId
+      ]);
 
       this.questionId = rows[0].questionId;
       return this;
     }
     catch (err) {
-      throw new Error('Could not save the quiz');
+      throw new Error('Could not save the question');
     }
   }
 
   async update({
-    question = null,
-    answers = null,
-    correctIndex = null,
-    order = null
+    question = null, answers = null, correctIndex = null, order = null
   }) {
     if (!this.questionId) {
       throw new Error('You need to save the qustion before it can be updated');
@@ -59,10 +59,13 @@ class Question {
         this.order = order;
       }
 
-      await Database.query(
-        queries.updateQuestion,
-        [this.questionId, this.question, this.answers, this.correctIndex, this.order]
-      );
+      await Database.query(queries.updateQuestion, [
+        this.questionId,
+        this.question,
+        this.answers,
+        this.correctIndex,
+        this.order
+      ]);
 
       return this;
     }
@@ -75,7 +78,7 @@ class Question {
     try {
       const { rows } = await Database.query(queries.findQuestionById, [id]);
 
-      if (rows.length < 1) throw new Error();
+      if (rows.length < 1) return null;
 
       return new Question(rows[0]);
     }
@@ -96,10 +99,7 @@ class Question {
 
   static async findByQuizId(quizId, { limit = 10, offset = 0 }) {
     try {
-      const { rows } = await Database.query(
-        queries.findQustionsByQuizId,
-        [quizId, limit, offset]
-      );
+      const { rows } = await Database.query(queries.findQustionsByQuizId, [quizId, limit, offset]);
 
       return rows.map(row => new Question(row));
     }

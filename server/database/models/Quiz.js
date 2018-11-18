@@ -3,21 +3,21 @@ const queries = require('../queries');
 
 class Quiz {
   constructor({
-    quizId = null, title, numberOfPlayers = 4, ownerId = null, published = false
+    quizId = null, title, ownerId = null, published = false
   }) {
     this.quizId = quizId;
     this.title = title;
-    this.numberOfPlayers = numberOfPlayers;
     this.ownerId = ownerId;
     this.published = published;
   }
 
   async save() {
     try {
-      const { rows } = await Database.query(
-        queries.insertNewQuiz,
-        [this.title, this.numberOfPlayers, this.ownerId, this.published]
-      );
+      const { rows } = await Database.query(queries.insertNewQuiz, [
+        this.title,
+        this.ownerId,
+        this.published
+      ]);
 
       this.quizId = rows[0].quizId;
       return this;
@@ -27,13 +27,13 @@ class Quiz {
     }
   }
 
-  async update({ title = null, numberOfPlayers = null, published = null }) {
+  async update({ title = null, published = null }) {
     if (!this.quizId) {
       throw new Error('You need to save the quiz before it can be updated');
     }
 
-    if (!title && !numberOfPlayers && !published) {
-      throw new Error('You need to include a title or number of players');
+    if (!title) {
+      throw new Error('You need to include a title');
     }
 
     try {
@@ -41,18 +41,16 @@ class Quiz {
         this.title = title;
       }
 
-      if (numberOfPlayers) {
-        this.numberOfPlayers = numberOfPlayers;
-      }
-
       if (published) {
         this.published = published;
       }
 
-      await Database.query(
-        queries.updateQuiz,
-        [this.quizId, this.title, this.numberOfPlayers, this.published]
-      );
+      await Database.query(queries.updateQuiz, [
+        this.quizId,
+        this.title,
+        this.numberOfPlayers,
+        this.published
+      ]);
 
       return this;
     }
@@ -65,7 +63,7 @@ class Quiz {
     try {
       const { rows } = await Database.query(queries.findQuizById, [id]);
 
-      if (rows.length < 1) throw new Error();
+      if (rows.length < 1) return null;
 
       return new Quiz(rows[0]);
     }
@@ -86,10 +84,7 @@ class Quiz {
 
   static async findByUserId(userId, { limit = 20, offset = 0 }) {
     try {
-      const { rows } = await Database.query(
-        queries.findQuizByUserId,
-        [userId, limit, offset]
-      );
+      const { rows } = await Database.query(queries.findQuizByUserId, [userId, limit, offset]);
 
       return rows.map(row => new Quiz(row));
     }

@@ -1,13 +1,23 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const GamesPage = () => {
-	return (
-		<div className="landing-page wrap hpad">
-			<div className="options-list">
-				<h1>GamesPage</h1>
+import { PageHeader } from '@components';
+
+class GamesPage extends Component {
+	componentDidMount() {
+		console.log('DID MOUNT');
+	}
+
+	render() {
+		return (
+			<div className="games-page">
+				<div className="wrap hpad">
+					<div className="options-list">
+						<PageHeader title="Games" />
+					</div>
+				</div>
 			</div>
-		</div>
-	);
-};
+		);
+	}
+}
 
 export default GamesPage;

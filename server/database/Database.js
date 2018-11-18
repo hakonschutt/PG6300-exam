@@ -8,11 +8,10 @@ const pool = new Pool({ connectionString: keys.postgresUri });
 
 pool.on('error', (err) => {
   /* eslint-disable */
-  console.error('Unexpected error', err);
-  /* eslint-enable */
+	console.error('Unexpected error', err);
+	/* eslint-enable */
   process.exit(-1);
 });
-
 
 exports.query = async (sql, inputs = null) => {
   let res = null;

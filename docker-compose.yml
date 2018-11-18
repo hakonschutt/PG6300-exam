@@ -8,8 +8,11 @@ services:
       - POSTGRES_DB=examdb
     ports:
       - '5432:5432'
-  redis:
-    image: 'redis:latest'
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
   nginx:
     restart: always
     build:
@@ -28,15 +31,13 @@ services:
     volumes:
       - /app/node_modules
       - ./server:/app
+    depends_on:
+      - 'postgres'
     environment:
       - NODE_ENV=docker
       - API_KEY=HMK3IYufW9QZN2B3stGJbClTzmDgGGRIAaIYQWsQYosgRsMoP7
       - SESSION_KEY=EfaDTruu9arRwDf036lf2KEc7kjptep62KE78I56tD7rGyk1ZF
-      - REDIS_URL=redis://redis:6379
       - DATABASE_URL=postgresql://postgres:postgres_pass@postgres/examdb
-    depends_on:
-      - postgres
-      - redis
   client:
     restart: always
     build:
@@ -45,8 +46,8 @@ services:
     volumes:
       - /app/node_modules
       - ./frontend:/app
+    depends_on:
+      - api
     environment:
       - NODE_ENV=docker
       - API_KEY=HMK3IYufW9QZN2B3stGJbClTzmDgGGRIAaIYQWsQYosgRsMoP7
-    depends_on:
-      - api

@@ -62,10 +62,6 @@ class AppRoutes extends Component<Props, *> {
 							component={loadablePage(() => import('@containers/NewQuizPage'))}
 						/>
 						<Route
-							path="/quizzes/edit/:quizId"
-							component={loadablePage(() => import('@containers/EditQuizPage'))}
-						/>
-						<Route
 							path="/settings"
 							component={loadablePage(() => import('@containers/SettingsPage'))}
 						/>

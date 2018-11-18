@@ -15,8 +15,8 @@ const initDatabase = async () => {
   }
   catch (err) {
     /* eslint-disable */
-    console.error('Unexpected error with the database', err);
-    /* eslint-enable */
+		console.error('Unexpected error with the database', err);
+		/* eslint-enable */
     process.exit(-1);
   }
 };
