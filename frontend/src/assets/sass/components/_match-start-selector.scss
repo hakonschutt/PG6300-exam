@@ -50,7 +50,32 @@
 		}
 	}
 
-	&.is-selected {
+	&.game-is-selected {
+		.match-start-selector-inner {
+			& > div {
+				height: 65px;
+
+				a {
+					cursor: default;
+
+					.image-wrap {
+						height: 0;
+						padding: 0;
+					}
+				}
+			}
+
+			.join-game {
+				opacity: 0.8;
+			}
+
+			.create-game {
+				opacity: 0.4;
+			}
+		}
+	}
+
+	&.quiz-is-selected {
 		.match-start-selector-inner {
 			& > div {
 				height: 65px;

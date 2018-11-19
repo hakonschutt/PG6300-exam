@@ -27,9 +27,10 @@ const initExpress = () => {
   initDatabase();
   initPassport(app);
   initRoutes(app);
-  initWebsockets(app);
 
-  return app;
+  const server = initWebsockets(app);
+
+  return server;
 };
 
 module.exports = initExpress;

@@ -7,13 +7,11 @@ import { SingleMatchCard } from '@components';
 type Props = {
 	joinClick: Function,
 	createClick: Function,
-	isSelected: Boolean,
+	isSelected: String,
 };
 
 const MatchStartSelector = ({ joinClick, createClick, isSelected }: Props) => {
-	const className = classNames('match-start-selector', {
-		'is-selected': isSelected,
-	});
+	const className = classNames('match-start-selector', isSelected);
 
 	return (
 		<div className={className}>

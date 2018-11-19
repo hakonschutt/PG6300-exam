@@ -20,9 +20,7 @@ const GamesList = ({ games = [], onClick }: Props) => {
 								<label>Status</label>
 								<h5>{game.status}</h5>
 								<label>People</label>
-								<h5>
-									{game.waiting}/{game.total}
-								</h5>
+								<h5>{game.waiting}</h5>
 							</div>
 							<a
 								className="btn"
