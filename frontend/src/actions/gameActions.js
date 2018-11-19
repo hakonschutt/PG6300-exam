@@ -1,4 +1,4 @@
-import { FETCH_GAMES, CREATE_GAME, SET_GAMES_ERROR } from './types';
+import { FETCH_GAMES, CREATE_GAME, SET_GLOBAL_ALERT } from './types';
 
 const staticGames = [
 	{
@@ -32,11 +32,10 @@ const staticGames = [
 ];
 
 export const fetchGames = () => async dispatch => {
-	dispatch({ type: SET_GAMES_ERROR, payload: null });
 	try {
 		dispatch({ type: FETCH_GAMES, payload: staticGames });
 	} catch (err) {
-		dispatch({ type: SET_GAMES_ERROR, payload: 'Could not fetch games' });
+		dispatch({ type: SET_GLOBAL_ALERT, payload: 'Could not fetch games' });
 	}
 };
 

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { fetchQuizzes, setPopup } from '@actions';
-import { PageHeader, QuizzesList, Alert } from '@components';
+import { PageHeader, QuizzesList } from '@components';
 
 type Props = {
 	quizzes: Object,
@@ -26,18 +26,15 @@ class QuizzesPage extends Component<Props, *> {
 	}
 
 	render() {
-		const {
-			quizzes: { error, list },
-		} = this.props;
+		const { quizzes } = this.props;
 
 		return (
 			<div className="landing-page">
 				<div className="wrap hpad">
 					<div className="options-list">
 						<PageHeader title="Quizzes" />
-						<Alert error={error} />
 						<QuizzesList
-							quizzes={list}
+							quizzes={quizzes}
 							onClick={this.onSingleClick}
 							buttonText="Start game"
 						/>

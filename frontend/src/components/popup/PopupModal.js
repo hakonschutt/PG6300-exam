@@ -4,6 +4,7 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 import { closePopup } from '@actions';
 import { Cross } from '@assets/images';
+import ModalBuilder from './ModalBuilder';
 
 const transitionOptions = {
 	transitionName: 'popup',
@@ -26,6 +27,7 @@ const PopupModal = ({ popup, closePopup }: Props) => {
 						<div className="close-icon" onClick={closePopup}>
 							<Cross />
 						</div>
+						<ModalBuilder popup={popup} />
 					</div>
 				</div>
 			)}

@@ -1,0 +1,53 @@
+.quizzes-card-list {
+	display: block;
+	margin-top: 2rem;
+
+	ul {
+		display: flex;
+		justify-content: space-around;
+		flex-wrap: wrap;
+
+		.list-item {
+			display: block;
+			width: 23%;
+			border-radius: 5px;
+			background-color: map-get($base-colors, white);
+			overflow: hidden;
+
+			.image-wrap {
+				display: block;
+				overflow: hidden;
+				height: 120px;
+				width: 100%;
+				background-color: map-get($brand-colors, fifth);
+				padding: 30px 0;
+				transition: all 0.5s ease;
+
+				svg {
+					height: 60px;
+					width: 60px;
+					margin: 0 auto;
+					display: block;
+					opacity: 0.8;
+				}
+			}
+
+			.text-wrap {
+				display: block;
+				padding: 1rem;
+
+				span {
+					font-size: 1.1rem;
+				}
+
+				a {
+					display: block;
+					margin: 1rem 0 0 0;
+					color: map-get($brand-colors, fifth);
+					text-align: right;
+					cursor: pointer;
+				}
+			}
+		}
+	}
+}

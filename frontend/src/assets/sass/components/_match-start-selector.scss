@@ -1,0 +1,77 @@
+.match-start-selector {
+	display: block;
+
+	&-inner {
+		display: flex;
+		justify-content: space-around;
+
+		& > div {
+			width: 300px;
+			border-radius: 15px;
+			overflow: hidden;
+			height: 195px;
+			background-color: map-get($base-colors, white);
+			transition: all 0.5s ease;
+
+			a {
+				display: block;
+				height: 100%;
+				width: 100%;
+				position: relative;
+				cursor: pointer;
+
+				.image-wrap {
+					display: block;
+					overflow: hidden;
+					height: 130px;
+					width: 100%;
+					background-color: map-get($brand-colors, primary);
+					padding: 30px 0;
+					transition: all 0.5s ease;
+
+					svg {
+						height: 70px;
+						width: 70px;
+						margin: 0 auto;
+						display: block;
+						opacity: 0.8;
+					}
+				}
+
+				.text-wrap {
+					display: block;
+					padding: 1.5rem 1rem;
+
+					span {
+						font-size: 1.1rem;
+					}
+				}
+			}
+		}
+	}
+
+	&.is-selected {
+		.match-start-selector-inner {
+			& > div {
+				height: 65px;
+
+				a {
+					cursor: default;
+
+					.image-wrap {
+						height: 0;
+						padding: 0;
+					}
+				}
+			}
+
+			.join-game {
+				opacity: 0.4;
+			}
+
+			.create-game {
+				opacity: 0.8;
+			}
+		}
+	}
+}

@@ -2,7 +2,7 @@ import {
 	FETCH_QUIZZES,
 	FETCH_USER_QUIZZES,
 	CREATE_QUIZ,
-	SET_QUIZZES_ERROR,
+	SET_GLOBAL_ALERT,
 } from '@actions/types';
 
 const staticQuizzes = [
@@ -25,11 +25,10 @@ const staticQuizzes = [
 ];
 
 export const fetchQuizzes = () => async dispatch => {
-	dispatch({ type: SET_QUIZZES_ERROR, payload: null });
 	try {
 		dispatch({ type: FETCH_QUIZZES, payload: staticQuizzes });
 	} catch (err) {
-		dispatch({ type: SET_QUIZZES_ERROR, payload: 'Could not fetch quizzes' });
+		dispatch({ type: SET_GLOBAL_ALERT, payload: 'Could not fetch quizzes' });
 	}
 };
 

@@ -20,10 +20,14 @@ const PageAlert = ({ alert, removeGlobalAlert }: Props) => {
 	return (
 		<ReactCSSTransitionGroup {...transitionOptions} className="page-alert">
 			{alert && (
-				<div className="popup-module">
-					<h2>{alert}</h2>
-					<div className="close-icon" onClick={removeGlobalAlert}>
-						<Cross />
+				<div className="alert-modal">
+					<div className="wrap hpad">
+						<div className="alert-modal-inner">
+							<h2>{alert}</h2>
+							<div className="close-icon" onClick={removeGlobalAlert}>
+								<Cross />
+							</div>
+						</div>
 					</div>
 				</div>
 			)}

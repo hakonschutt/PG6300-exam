@@ -7,3 +7,12 @@ export { default as PageHeader } from '@components/layouts/PageHeader';
 export { default as QuizzesList } from '@components/layouts/QuizzesList';
 export { default as GamesList } from '@components/layouts/GamesList';
 export { default as PageAlert } from '@components/layouts/PageAlert';
+export {
+	default as QuizzesCardList,
+} from '@components/layouts/QuizzesCardList';
+export {
+	default as SingleMatchCard,
+} from '@components/layouts/SingleMatchCard';
+export {
+	default as MatchStartSelector,
+} from '@components/layouts/MatchStartSelector';

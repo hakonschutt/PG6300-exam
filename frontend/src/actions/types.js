@@ -27,4 +27,3 @@ export const SET_GAMES_ERROR = 'set_games_error';
 export const FETCH_QUIZZES = 'fetch_quizzes';
 export const FETCH_USER_QUIZZES = 'fetch_user_quizzes';
 export const CREATE_QUIZ = 'create_quiz';
-export const SET_QUIZZES_ERROR = 'set_quizzes_error';

@@ -1,22 +1,13 @@
-import {
-	FETCH_QUIZZES,
-	FETCH_USER_QUIZZES,
-	CREATE_QUIZ,
-	SET_QUIZZES_ERROR,
-} from '@actions/types';
+import { FETCH_QUIZZES, CREATE_QUIZ } from '@actions/types';
 
-const defaultState = { error: null, list: [] };
+const defaultState = [];
 
 export default function(state = defaultState, action) {
 	switch (action.type) {
 	case FETCH_QUIZZES:
-		return { ...state, list: [...state.list, ...action.payload] };
-	case FETCH_USER_QUIZZES:
-		return { ...state, list: action.payload };
+		return action.payload;
 	case CREATE_QUIZ:
-		return { ...state, list: [action.payload, ...state.list] };
-	case SET_QUIZZES_ERROR:
-		return { ...state, error: action.payload };
+		return [action.payload, ...state.list];
 	default:
 		return state;
 	}
