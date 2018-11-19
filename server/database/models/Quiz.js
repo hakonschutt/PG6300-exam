@@ -72,9 +72,9 @@ class Quiz {
     }
   }
 
-  static async findAll({ limit = 20, offset = 0 }) {
+  static async findAll() {
     try {
-      const { rows } = await Database.query(queries.findAllQuizzes, [limit, offset]);
+      const { rows } = await Database.query(queries.findAllQuizzes);
       return rows.map(row => new Quiz(row));
     }
     catch (err) {
@@ -82,9 +82,9 @@ class Quiz {
     }
   }
 
-  static async findByUserId(userId, { limit = 20, offset = 0 }) {
+  static async findByUserId(userId) {
     try {
-      const { rows } = await Database.query(queries.findQuizByUserId, [userId, limit, offset]);
+      const { rows } = await Database.query(queries.findQuizByUserId, [userId]);
 
       return rows.map(row => new Quiz(row));
     }

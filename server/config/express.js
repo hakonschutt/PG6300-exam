@@ -12,23 +12,22 @@ const initWebsockets = require('./websockets');
 const initExpress = () => {
   const app = express();
 
-  app.use(bodyParser.json());
+  const sessionMiddleware = session({
+    genid: () => uuid(),
+    cookie: { maxAge: 5 * 60 * 60 * 1000 },
+    secret: keys.sessionKey,
+    resave: false,
+    saveUninitialized: false
+  });
 
-  app.use(
-    session({
-      genid: () => uuid(),
-      cookie: { maxAge: 5 * 60 * 60 * 1000 },
-      secret: keys.sessionKey,
-      resave: false,
-      saveUninitialized: false
-    })
-  );
+  app.use(bodyParser.json());
+  app.use(sessionMiddleware);
 
   initDatabase();
   initPassport(app);
   initRoutes(app);
 
-  const server = initWebsockets(app);
+  const server = initWebsockets(app, sessionMiddleware);
 
   return server;
 };

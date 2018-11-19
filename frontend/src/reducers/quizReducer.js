@@ -7,7 +7,7 @@ export default function(state = defaultState, action) {
 	case FETCH_QUIZZES:
 		return action.payload;
 	case CREATE_QUIZ:
-		return [action.payload, ...state.list];
+		return [action.payload, ...state];
 	default:
 		return state;
 	}

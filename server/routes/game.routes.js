@@ -9,7 +9,8 @@ const initGameRoutes = () => {
   router
     .route('/')
     .all(requireUser)
-    .get(gameHandler.findPendingGames);
+    .get(gameHandler.findPendingGames)
+    .post(gameHandler.createNewMatch);
 
   router
     .route('/:token')

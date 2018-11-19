@@ -48,10 +48,10 @@ module.exports = {
     SELECT * FROM quizzes WHERE quiz_id = $1
   `,
   findAllQuizzes: `
-    SELECT * FROM quizzes LIMIT $1 OFFSET $2
+    SELECT * FROM quizzes
   `,
   findQuizByUserId: `
-    SELECT * FROM quizzes WHERE user_id = $1 LIMIT $2 OFFSET $3
+    SELECT * FROM quizzes WHERE user_id = $1
   `,
   updateQuiz: `
     UPDATE quizzes SET title = $2, published = $3 WHERE quiz_id = $1

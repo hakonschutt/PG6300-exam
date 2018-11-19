@@ -6,8 +6,8 @@ exports.getQuizzes = async (req, res) => {
     let quizzes;
     const { current } = req.query;
 
-    if (current) quizzes = await Quiz.findByUserId(req.user.id, req.query);
-    else quizzes = await Quiz.findAll(req.query, req.query);
+    if (current) quizzes = await Quiz.findByUserId(req.user.id);
+    else quizzes = await Quiz.findAll();
 
     res.status(200).send(quizzes);
   }

@@ -13,7 +13,24 @@ exports.findPendingGames = async (req, res) => {
       return res.status(201).send(match);
     }
 
-    return res.status(200).send(matches);
+    const currentUserIsOwner = matches.find(match => match.partyLeaderId === req.user.userId);
+
+    return res.status(200).send(currentUserIsOwner || matches);
+  }
+  catch (err) {
+    return res.status(400).send();
+  }
+};
+
+exports.createNewMatch = async (req, res) => {
+  try {
+    const match = new Match({
+      ...req.body,
+      partyLeaderId: req.user.userId,
+      activePlayerIds: [req.user.userId]
+    }).save();
+
+    return res.status(201).send(match);
   }
   catch (err) {
     return res.status(400).send();

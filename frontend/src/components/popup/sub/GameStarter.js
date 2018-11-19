@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import { reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 import { formValidation } from '@utils';
 import { FormBuilder } from '@components';
-import { loginUser } from '@actions';
+import { closePopup } from '@actions';
 
 const formFields = [
 	{
@@ -18,6 +19,9 @@ const formFields = [
 
 type Props = {
 	handleSubmit: Function,
+	closePopup: Function,
+	info: Object,
+	history: Object,
 };
 
 class GameStarter extends Component<Props, *> {
@@ -30,9 +34,23 @@ class GameStarter extends Component<Props, *> {
 		};
 	}
 
-	onSubmit(values) {
+	async onSubmit(values) {
 		this.setState({ loading: true });
-		console.log(values);
+
+		try {
+			const res = await axios.post('/api/v1/games', {
+				...values,
+				...this.props.info,
+			});
+
+			this.props.history.push(`/match/${res.data.id}`);
+			this.props.closePopup();
+		} catch (err) {
+			this.setState({
+				loading: false,
+				error: 'Could not create match',
+			});
+		}
 	}
 
 	render() {
@@ -61,4 +79,9 @@ function validate(values) {
 export default reduxForm({
 	validate,
 	form: 'gameStarterForm',
-})(GameStarter);
+})(
+	connect(
+		null,
+		{ closePopup }
+	)(withRouter(GameStarter))
+);

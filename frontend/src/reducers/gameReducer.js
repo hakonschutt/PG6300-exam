@@ -7,7 +7,7 @@ export default function(state = defaultState, action) {
 	case FETCH_GAMES:
 		return action.payload;
 	case CREATE_GAME:
-		return [action.payload, ...state.list];
+		return [action.payload, ...state];
 	default:
 		return state;
 	}

@@ -6,6 +6,7 @@ class Match {
     id = null,
     title = 'Quiz',
     quizId = null,
+    currentQuestion = null,
     partyLeaderId,
     status = 'pending',
     activePlayerIds = []
@@ -13,6 +14,7 @@ class Match {
     this.id = id || uuid();
     this.title = title;
     this.quizId = quizId;
+    this.currentQuestion = currentQuestion;
     this.partyLeaderId = partyLeaderId;
     this.status = status;
     this.activePlayers = activePlayerIds.map(userId => ({

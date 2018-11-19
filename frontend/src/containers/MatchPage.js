@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import AnimateHeight from 'react-animate-height';
 
 import { requireLoggedInUser } from '@hocs';
-import { fetchQuizzes, setPopup } from '@actions';
+import { fetchQuizzes, setPopup, setGlobalAlert } from '@actions';
 import {
 	PageHeader,
 	QuizzesCardList,
@@ -14,8 +15,10 @@ import {
 
 type Props = {
 	quizzes: Array,
+	user: Object,
 	setPopup: Function,
 	fetchQuizzes: Function,
+	setGlobalAlert: Function,
 	history: Object,
 };
 
@@ -42,36 +45,26 @@ class MatchPage extends Component<Props, *> {
 	}
 
 	goToGame(info) {
-		this.props.history.push(`/match/${info.sockerId}`);
+		this.props.history.push(`/match/${info.id}`);
 	}
 
-	joinCurrentMatch() {
-		this.setState({
-			isSelected: false,
-			games: [
-				{
-					gameId: 1,
-					sockerId: 1,
-					title: 'test',
-					status: 'Pending',
-					waiting: 4,
-				},
-				{
-					gameId: 2,
-					sockerId: 2,
-					title: 'test',
-					status: 'Pending',
-					waiting: 4,
-				},
-				{
-					gameId: 3,
-					sockerId: 3,
-					title: 'test',
-					status: 'Pending',
-					waiting: 4,
-				},
-			],
-		});
+	async joinCurrentMatch() {
+		try {
+			const res = await axios.get('/api/v1/games');
+
+			if (Array.isArray(res.data)) {
+				this.setState({
+					isSelected: false,
+					games: res.data,
+				});
+			} else {
+				this.props.history.push(`/match/${res.data.id}`);
+			}
+		} catch (err) {
+			this.props.setGlobalAlert(
+				'There was an error while requesting active game, try again later'
+			);
+		}
 	}
 
 	render() {
@@ -109,7 +102,11 @@ class MatchPage extends Component<Props, *> {
 							<div className="game-select-header">
 								<h2>Select Game</h2>
 							</div>
-							<GamesList games={games} onClick={this.goToGame.bind(this)} />
+							<GamesList
+								userId={this.props.user.userId}
+								games={games}
+								onClick={this.goToGame.bind(this)}
+							/>
 						</AnimateHeight>
 					</div>
 				</div>
@@ -118,11 +115,11 @@ class MatchPage extends Component<Props, *> {
 	}
 }
 
-function mapStateToProps({ quizzes }) {
-	return { quizzes };
+function mapStateToProps({ quizzes, user }) {
+	return { quizzes, user };
 }
 
 export default connect(
 	mapStateToProps,
-	{ fetchQuizzes, setPopup }
+	{ fetchQuizzes, setPopup, setGlobalAlert }
 )(withRouter(requireLoggedInUser(MatchPage)));

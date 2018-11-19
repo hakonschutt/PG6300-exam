@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 import {
 	FETCH_QUIZZES,
 	FETCH_USER_QUIZZES,
@@ -5,28 +7,11 @@ import {
 	SET_GLOBAL_ALERT,
 } from '@actions/types';
 
-const staticQuizzes = [
-	{
-		quizId: 0,
-		title: 'Pub quiz',
-	},
-	{
-		quizId: 1,
-		title: 'Pub quiz',
-	},
-	{
-		quizId: 2,
-		title: 'Pub quiz',
-	},
-	{
-		quizId: 3,
-		title: 'Pub quiz',
-	},
-];
-
 export const fetchQuizzes = () => async dispatch => {
 	try {
-		dispatch({ type: FETCH_QUIZZES, payload: staticQuizzes });
+		const res = await axios.get('/api/v1/quizzes');
+
+		dispatch({ type: FETCH_QUIZZES, payload: res.data });
 	} catch (err) {
 		dispatch({ type: SET_GLOBAL_ALERT, payload: 'Could not fetch quizzes' });
 	}
