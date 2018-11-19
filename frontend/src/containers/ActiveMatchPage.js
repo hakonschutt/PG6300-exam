@@ -1,4 +1,5 @@
 import React from 'react';
+import { requireLoggedInUser } from '@hocs';
 
 const ActiveMatchPage = () => {
 	return (
@@ -10,4 +11,4 @@ const ActiveMatchPage = () => {
 	);
 };
 
-export default ActiveMatchPage;
+export default requireLoggedInUser(ActiveMatchPage);

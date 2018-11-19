@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import AnimateHeight from 'react-animate-height';
 
+import { requireLoggedInUser } from '@hocs';
 import { fetchQuizzes, setPopup } from '@actions';
 import { PageHeader, QuizzesCardList, MatchStartSelector } from '@components';
 
@@ -67,4 +68,4 @@ function mapStateToProps({ quizzes }) {
 export default connect(
 	mapStateToProps,
 	{ fetchQuizzes, setPopup }
-)(MatchPage);
+)(requireLoggedInUser(MatchPage));

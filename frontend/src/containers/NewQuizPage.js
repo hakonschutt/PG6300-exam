@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { requireLoggedInUser } from '@hocs';
+
 const NewQuizPage = () => {
 	return (
 		<div className="landing-page wrap hpad">
@@ -10,4 +12,4 @@ const NewQuizPage = () => {
 	);
 };
 
-export default NewQuizPage;
+export default requireLoggedInUser(NewQuizPage);
