@@ -17,13 +17,11 @@ export const SET_ASIDE = 'set_aside';
 export const SET_GLOBAL_ALERT = 'set_global_alert';
 export const REMOVE_GLOBAL_ALERT = 'remove_global_alert';
 
-// MIGHT REMOVE v
-// GAME ACTIONS
-export const FETCH_GAMES = 'fetch_games';
-export const CREATE_GAME = 'create_game';
-export const SET_GAMES_ERROR = 'set_games_error';
-
 // QUIZ ACTIONS
 export const FETCH_QUIZZES = 'fetch_quizzes';
 export const FETCH_USER_QUIZZES = 'fetch_user_quizzes';
 export const CREATE_QUIZ = 'create_quiz';
+
+// MATCH ACTIONS
+export const FETCH_MATCH_INFO = 'fetch_match_info';
+export const NEW_MATCH_USER = 'new_match_user';

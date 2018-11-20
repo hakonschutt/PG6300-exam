@@ -11,13 +11,13 @@ export default function(ComposedComponent) {
 	class UserRedirect extends Component<Props, *> {
 		componentDidMount() {
 			if (this.props.user.isAuthenticated) {
-				this.props.history.push('/games');
+				this.props.history.push('/match');
 			}
 		}
 
 		componentWillUpdate(nextProps) {
 			if (nextProps.user.isAuthenticated) {
-				this.props.history.push('/games');
+				this.props.history.push('/match');
 			}
 		}
 

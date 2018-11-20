@@ -18,7 +18,7 @@ class Match {
     this.partyLeaderId = partyLeaderId;
     this.status = status;
     this.activePlayers = activePlayerIds.map(userId => ({
-      id: userId,
+      userId,
       score: 0
     }));
   }

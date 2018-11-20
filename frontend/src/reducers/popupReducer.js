@@ -1,4 +1,4 @@
-import { CLOSE_POPUP, SET_POPUP } from '../actions/types';
+import { CLOSE_POPUP, SET_POPUP } from '@actions/types';
 
 const defaultState = { component: null };
 

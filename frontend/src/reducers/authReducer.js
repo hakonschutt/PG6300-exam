@@ -11,11 +11,8 @@ const defaultState = { isAuthenticated: false };
 export default function(state = defaultState, action) {
 	switch (action.type) {
 	case FETCH_USER:
-		return { ...state, ...action.payload };
 	case UPDATE_USER_INFO:
-		return { ...state, ...action.payload };
 	case SIGNUP_USER:
-		return { ...state, ...action.payload };
 	case LOGIN_USER:
 		return { ...state, ...action.payload };
 	case LOGOUT_USER:
