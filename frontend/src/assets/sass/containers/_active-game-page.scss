@@ -187,6 +187,13 @@
 				}
 			}
 
+			.next-question {
+				display: block;
+				text-align: right;
+				color: map-get($base-colors, white);
+				margin-top: 2rem;
+			}
+
 			.players-list {
 				display: block;
 				width: 500px;

@@ -206,6 +206,31 @@ img {
 	}
 }
 
+.global-large-counter {
+	display: block;
+	margin: 1rem 0.5rem;
+	margin-top: 3rem;
+	background-color: map-get($brand-colors, fourth);
+	font-size: 1.5rem;
+	border-radius: 15px;
+	text-align: center;
+	height: 50px;
+	overflow: hidden;
+	position: relative;
+
+	.large-counter-inner {
+		display: block;
+		background-color: map-get($brand-colors, tertiary);
+		height: 50px;
+	}
+
+	span {
+		display: block;
+		@include hvalign;
+		position: absolute;
+	}
+}
+
 .page-loader {
 	display: block;
 	height: 100%;

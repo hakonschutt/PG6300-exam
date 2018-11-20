@@ -2,7 +2,7 @@ const Match = require('../socket/Match');
 
 exports.getUpdatedMatch = async (matchId, player) => {
   try {
-    const match = Match.findById(matchId);
+    const match = await Match.findById(matchId);
 
     const contains = match.containsPlayer(player);
 

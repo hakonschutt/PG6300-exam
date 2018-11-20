@@ -1,6 +1,7 @@
 const http = require('http');
 const socketIo = require('socket.io');
 
+const User = require('../database/models/User');
 const Match = require('../socket/Match');
 const socketActions = require('../socket/socketActions');
 
@@ -36,9 +37,10 @@ const initWebsockets = (app, session) => {
       socket.join(matchId);
 
       try {
-        const match = socketActions.getUpdatedMatch(matchId, socket.user);
+        // const match = await socketActions.getUpdatedMatch(matchId, socket.user);
+        const match = null;
 
-        socket.to(matchId).emit('match_update', match);
+        io.to(matchId).emit('match_update', match);
       }
       catch (err) {
         io.to(`${socket.id}`).emit('Err', {
@@ -46,9 +48,7 @@ const initWebsockets = (app, session) => {
         });
       }
 
-      socket.to(matchId).emit('new_user', socket.user);
-
-      socket.on('answer_question', (answer) => {});
+      socket.on('answer_question', (time, answer) => {});
 
       socket.on('next_question', () => {});
 

@@ -4,3 +4,4 @@ export {
 
 export { default as ActiveMatch } from '@components/match/ActiveMatch';
 export { default as MatchResult } from '@components/match/MatchResult';
+export { default as MatchPause } from '@components/match/MatchPause';

@@ -1,15 +1,46 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { Countdown, CenteredLoader } from '@components';
+import { LargeCountdown, CenteredLoader } from '@components';
+import { answerMatchQuestion, goToPausePage } from '@actions';
 
 type Props = {
 	currentMatch: Object,
 	user: Object,
+	fetchNextQuestion: Function,
+	goToPausePage: Function,
 };
 
 class ActiveMatch extends Component<Props, *> {
-	onAnswerClick() {}
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			hasAnswered: false,
+		};
+		this.refCounter = React.createRef();
+	}
+
+	componentWillUnmount() {
+		this.props.fetchNextQuestion();
+	}
+
+	onAnswerClick(index) {
+		if (!this.state.hasAnswered) {
+			this.setState({ hasAnswered: true });
+			const seconds = this.refCounter.getSeconds();
+		}
+	}
+
+	onFinish() {
+		const { currentMatch, user } = this.props;
+
+		if (currentMatch.partyLeaderId === user.userId) {
+			this.props.goToPausePage();
+		}
+
+		this.props.goToPausePage();
+	}
 
 	renderQuestion() {
 		const {
@@ -36,6 +67,11 @@ class ActiveMatch extends Component<Props, *> {
 						))}
 					</ul>
 				</div>
+				<LargeCountdown
+					onRef={instance => (this.refCounter = instance)}
+					seconds={10}
+					onFinish={this.onFinish.bind(this)}
+				/>
 			</div>
 		);
 	}
@@ -65,4 +101,7 @@ function mapStateToProps({ currentMatch, user }) {
 	return { currentMatch, user };
 }
 
-export default connect(mapStateToProps)(ActiveMatch);
+export default connect(
+	mapStateToProps,
+	{ answerMatchQuestion, goToPausePage }
+)(ActiveMatch);

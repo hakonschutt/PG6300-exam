@@ -4,7 +4,12 @@ import { withRouter } from 'react-router-dom';
 
 import { setupSocketConnection } from '@actions';
 import { requireLoggedInUser } from '@hocs';
-import { MatchWaitingRoom, ActiveMatch, MatchResult } from '@components';
+import {
+	MatchWaitingRoom,
+	ActiveMatch,
+	MatchResult,
+	MatchPause,
+} from '@components';
 
 type Props = {
 	currentMatch: Object,
@@ -28,10 +33,9 @@ class ActiveMatchPage extends Component<Props, *> {
 			<div className="active-game-page">
 				<div className="wrap hpad">
 					<div className="active-game-page-inner">
-						{(status === 'pending' || status === 'starting') && (
-							<MatchWaitingRoom />
-						)}
+						{['pending', 'starting'].includes(status) && <MatchWaitingRoom />}
 						{status === 'active' && <ActiveMatch />}
+						{status === 'pause' && <MatchPause />}
 						{status === 'finished' && <MatchResult />}
 					</div>
 				</div>

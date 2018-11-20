@@ -23,5 +23,9 @@ export const FETCH_USER_QUIZZES = 'fetch_user_quizzes';
 export const CREATE_QUIZ = 'create_quiz';
 
 // MATCH ACTIONS
+export const UPDATE_MATCH = 'update_match';
+export const PAUSE_MATCH = 'pause_match';
+
+// UNUSED
 export const FETCH_MATCH_INFO = 'fetch_match_info';
 export const NEW_MATCH_USER = 'new_match_user';
