@@ -15,8 +15,7 @@ const initGameRoutes = () => {
   router
     .route('/:token')
     .all(requireUser)
-    .get(gameHandler.checkForGameAccess)
-    .patch(gameHandler.startGame);
+    .get(gameHandler.checkForGameAccess);
 
   return router;
 };

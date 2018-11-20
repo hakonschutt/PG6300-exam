@@ -7,7 +7,7 @@ exports.findPendingGames = async (req, res) => {
     if (matches.length === 0) {
       const match = new Match({
         partyLeaderId: req.user.userId,
-        activePlayerIds: [req.user.userId]
+        activePlayerIds: [req.user]
       }).save();
 
       return res.status(201).send(match);
@@ -27,7 +27,7 @@ exports.createNewMatch = async (req, res) => {
     const match = new Match({
       ...req.body,
       partyLeaderId: req.user.userId,
-      activePlayerIds: [req.user.userId]
+      activePlayerIds: [req.user]
     }).save();
 
     return res.status(201).send(match);
@@ -48,17 +48,6 @@ exports.checkForGameAccess = async (req, res) => {
     }
 
     return res.status(200).send(match);
-  }
-  catch (err) {
-    return res.status(401).send();
-  }
-};
-
-exports.startGame = async (req, res) => {
-  try {
-    Match.findById(req.params.token).startGame();
-
-    return res.status(200).send();
   }
   catch (err) {
     return res.status(401).send();

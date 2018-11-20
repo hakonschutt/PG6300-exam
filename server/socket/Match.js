@@ -17,8 +17,9 @@ class Match {
     this.currentQuestion = currentQuestion;
     this.partyLeaderId = partyLeaderId;
     this.status = status;
-    this.activePlayers = activePlayerIds.map(userId => ({
-      userId,
+    this.activePlayers = activePlayerIds.map(player => ({
+      userId: player.userId,
+      name: player.name,
       score: 0
     }));
   }
@@ -40,17 +41,21 @@ class Match {
     return this;
   }
 
-  addPlayer(id) {
+  addPlayer(player) {
     if (this.status !== 'pending') {
       throw new Error('Could not add player because the game is not pending');
     }
 
-    const obj = { id, score: 0 };
+    const obj = { userId: player.userId, name: player.name, score: 0 };
     this.activePlayers = [...this.activePlayers, obj];
 
     matches.saveMatch(this);
 
     return this;
+  }
+
+  containsPlayer(user) {
+    return this.activePlayers.some(player => player.userId === user.userId);
   }
 
   finishGame() {

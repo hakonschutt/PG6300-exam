@@ -2,12 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { shallow } from 'enzyme';
 
-import Test from '../src/Test';
+import PageHeader from '../src/components/layouts/PageHeader';
 
 let wrapped;
 
 beforeEach(() => {
-  wrapped = shallow(<Test />);
+  wrapped = shallow(<PageHeader />);
 });
 
 it('Should show h1', () => {

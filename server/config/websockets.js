@@ -1,7 +1,8 @@
 const http = require('http');
 const socketIo = require('socket.io');
 
-const User = require('../database/models/User');
+const Match = require('../socket/Match');
+const socketActions = require('../socket/socketActions');
 
 const initWebsockets = (app, session) => {
   const server = http.createServer(app);
@@ -34,6 +35,17 @@ const initWebsockets = (app, session) => {
     if (matchId) {
       socket.join(matchId);
 
+      try {
+        const match = socketActions.getUpdatedMatch(matchId, socket.user);
+
+        socket.to(matchId).emit('match_update', match);
+      }
+      catch (err) {
+        io.to(`${socket.id}`).emit('Err', {
+          msg: 'The match is active and can not accept more players'
+        });
+      }
+
       socket.to(matchId).emit('new_user', socket.user);
 
       socket.on('answer_question', (answer) => {});
@@ -45,13 +57,15 @@ const initWebsockets = (app, session) => {
       socket.on('start_game', () => {});
 
       socket.on('disconnect', () => {
-        // TODO: Remove from match!
         socket.to(matchId).emit('user_leave', socket.user);
       });
 
       socket.on('error', (error) => {
         console.log('ERR: ', error);
       });
+    }
+    else {
+      io.to(`${socket.id}`).emit('Err', { msg: 'You are missing a match token' });
     }
   });
 
