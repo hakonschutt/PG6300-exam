@@ -1,4 +1,9 @@
-import { UPDATE_MATCH, PAUSE_MATCH } from '@actions/types';
+import {
+	UPDATE_MATCH,
+	PAUSE_MATCH,
+	ANSWER_QUESTION,
+	START_MATCH,
+} from '@actions/types';
 
 const defaultState = {
 	title: null,
@@ -15,6 +20,9 @@ export default function(state = defaultState, action) {
 		return { ...state, ...action.payload };
 	case PAUSE_MATCH:
 		return { ...state, status: 'pause' };
+	case ANSWER_QUESTION:
+	case START_MATCH:
+		return state;
 	default:
 		return state;
 	}

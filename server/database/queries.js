@@ -97,7 +97,10 @@ module.exports = {
     SELECT * FROM questions LIMIT $1 OFFSET $2
   `,
   countQuestionByQuizId: `
-  SELECT COUNT(*) FROM questions WHERE quiz_id = $1
+    SELECT COUNT(*) FROM questions WHERE quiz_id = $1
+  `,
+  validateQuestionAnswer: `
+    SELECT COUNT(*) FROM questions WHERE question_id = $1 AND correct_index = $2
   `,
   updateQuestion: `
     UPDATE questions

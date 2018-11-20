@@ -119,13 +119,25 @@ class Question {
     }
   }
 
+  static async validateAnswer(questionId, answer) {
+    try {
+      const { rows } = await Database.query(queries.validateQuestionAnswer, [questionId, answer]);
+
+      return rows[0].count == 1;
+    }
+    catch (err) {
+      throw new Error('An issue occured. Try again later');
+    }
+  }
+
   static async getNextQuestion(quizId, offset = 0) {
     try {
       const { rows } = await Database.query(queries.findNextQuestion, [quizId, offset]);
-
+      console.log(rows);
       return new Question(rows[0]);
     }
     catch (err) {
+      console.log(err);
       throw new Error('An issue occured. Try again later');
     }
   }

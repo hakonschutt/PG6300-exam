@@ -21,7 +21,10 @@ const initWebsockets = (app, session) => {
       const { user } = socket.request.session.passport;
 
       const current = await User.findById(user);
-      socket.user = current;
+
+      /* eslint-disable */
+			socket.user = current;
+			/* eslint-enable */
 
       next();
     }
@@ -62,11 +65,56 @@ const initWebsockets = (app, session) => {
         }
       });
 
-      socket.on('answer_question', (time, answer) => {});
+      socket.on('answer_question', async (data) => {
+        try {
+          const match = Match.findById(matchId);
 
-      socket.on('next_question', () => {});
+          if (match) {
+            await match.updatePlayerScore(socket.user.userId, JSON.parse(data));
+          }
+        }
+        catch (err) {
+          io.to(`${socket.id}`).emit('Err', {
+            msg: 'There was an issue processing you answer'
+          });
+        }
+      });
 
-      socket.on('finish_game', () => {});
+      socket.on('finished_question', () => {
+        try {
+          const match = Match.findById(matchId);
+
+          if (match) {
+            if (match.questionNumber === match.questionCount) {
+              match.status = 'finished';
+            }
+            else {
+              match.status = 'pause';
+            }
+
+            io.to(matchId).emit('match_update', match);
+          }
+        }
+        catch (err) {
+          io.to(matchId).emit('match_error', { error: 'Could not continue game' });
+        }
+      });
+
+      socket.on('next_question', () => {
+        try {
+          const match = Match.findById(matchId);
+
+          if (match) {
+            const newMatch = match.getNextQuestion();
+            newMatch.status = 'active';
+
+            io.to(matchId).emit('match_update', newMatch);
+          }
+        }
+        catch (err) {
+          io.to(matchId).emit('match_error', { error: 'Could not continue game' });
+        }
+      });
 
       socket.on('disconnect', () => {
         socket.to(matchId).emit('user_leave', socket.user);

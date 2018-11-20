@@ -1,7 +1,13 @@
 import io from 'socket.io-client';
 import axios from 'axios';
 
-import { SET_GLOBAL_ALERT, UPDATE_MATCH, PAUSE_MATCH } from '@actions/types';
+import {
+	SET_GLOBAL_ALERT,
+	UPDATE_MATCH,
+	PAUSE_MATCH,
+	ANSWER_QUESTION,
+	START_MATCH,
+} from '@actions/types';
 
 let socket = null;
 let currentMatchId = null;
@@ -36,12 +42,23 @@ export const setupSocketConnection = (history, matchId) => async dispatch => {
 };
 
 export const startMatch = () => dispatch => {
-	console.log('GOT HERE');
 	socket.emit('start_match', {});
+
+	dispatch({ type: START_MATCH, payload: null });
+};
+
+export const finishedQuestion = () => dispatch => {
+	socket.emit('finished_question', {});
+};
+
+export const getNextQuestion = () => dispatch => {
+	socket.emit('next_question', {});
 };
 
 export const answerMatchQuestion = data => dispatch => {
-	socket.emit('answer_question', data);
+	socket.emit('answer_question', JSON.stringify(data));
+
+	dispatch({ type: ANSWER_QUESTION, payload: null });
 };
 
 export const goToPausePage = () => {

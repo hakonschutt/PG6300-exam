@@ -43,9 +43,33 @@ class Match {
       const count = await Question.countByQuizId(this.quizId);
       this.questionCount = count;
 
-      const question = await Question.getNextQuestion(this.quizId, this.questionNumber);
+      const { questionId, question, answers } = await Question.getNextQuestion(
+        this.quizId,
+        this.questionNumber
+      );
 
-      this.currentQuestion = { question: question.question, answers: question.answers };
+      this.currentQuestion = { questionId, question, answers };
+
+      this.questionNumber = this.questionNumber + 1;
+    }
+    catch (err) {
+      throw new Error('Could not find questions');
+    }
+
+    this.status = 'active';
+    matches.saveMatch(this);
+
+    return this;
+  }
+
+  async getNextQuestion() {
+    try {
+      const { questionId, question, answers } = await Question.getNextQuestion(
+        this.quizId,
+        this.questionNumber
+      );
+
+      this.currentQuestion = { questionId, question, answers };
 
       this.questionNumber = this.questionNumber + 1;
     }
@@ -74,6 +98,32 @@ class Match {
 
   containsPlayer(user) {
     return this.activePlayers.some(player => player.userId === user.userId);
+  }
+
+  async updatePlayerScore(userId, data) {
+    try {
+      const isCorrect = await Question.validateAnswer(this.currentQuestion.questionId, data.index);
+      console.log('###############', isCorrect);
+
+      if (isCorrect) {
+        this.activePlayers = this.activePlayers.map((player) => {
+          if (player.userId === userId) {
+            const score = player.score + data.seconds;
+
+            return { ...player, score };
+          }
+
+          return player;
+        });
+
+        matches.saveMatch(this);
+      }
+
+      return this;
+    }
+    catch (err) {
+      throw new Error('There was and issue validating user answer');
+    }
   }
 
   finishGame() {
