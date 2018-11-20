@@ -28,14 +28,19 @@ export const setupSocketConnection = (history, matchId) => async dispatch => {
 		socket.on('match_update', match => {
 			dispatch({ type: UPDATE_MATCH, payload: match });
 		});
+
+		socket.on('match_error', data => {
+			dispatch({ type: SET_GLOBAL_ALERT, payload: data.error });
+		});
 	}
 };
 
-export const startMatch = () => {
-	socket.emit('start_match', null);
+export const startMatch = () => dispatch => {
+	console.log('GOT HERE');
+	socket.emit('start_match', {});
 };
 
-export const answerMatchQuestion = data => {
+export const answerMatchQuestion = data => dispatch => {
 	socket.emit('answer_question', data);
 };
 

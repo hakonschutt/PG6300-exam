@@ -108,6 +108,28 @@ class Question {
     }
   }
 
+  static async countByQuizId(quizId) {
+    try {
+      const { rows } = await Database.query(queries.countQuestionByQuizId, [quizId]);
+
+      return rows[0].count;
+    }
+    catch (err) {
+      throw new Error('An issue occured. Try again later');
+    }
+  }
+
+  static async getNextQuestion(quizId, offset = 0) {
+    try {
+      const { rows } = await Database.query(queries.findNextQuestion, [quizId, offset]);
+
+      return new Question(rows[0]);
+    }
+    catch (err) {
+      throw new Error('An issue occured. Try again later');
+    }
+  }
+
   static async deleteById(id) {
     try {
       const { rows } = await Database.query(queries.deleteQuestionById, [id]);

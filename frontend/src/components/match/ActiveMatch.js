@@ -7,7 +7,6 @@ import { answerMatchQuestion, goToPausePage } from '@actions';
 type Props = {
 	currentMatch: Object,
 	user: Object,
-	fetchNextQuestion: Function,
 	goToPausePage: Function,
 };
 
@@ -19,10 +18,6 @@ class ActiveMatch extends Component<Props, *> {
 			hasAnswered: false,
 		};
 		this.refCounter = React.createRef();
-	}
-
-	componentWillUnmount() {
-		this.props.fetchNextQuestion();
 	}
 
 	onAnswerClick(index) {

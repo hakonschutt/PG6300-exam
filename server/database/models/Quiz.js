@@ -93,6 +93,17 @@ class Quiz {
     }
   }
 
+  static async getRandomQuiz() {
+    try {
+      const { rows } = await Database.query(queries.getRandomQuiz);
+
+      return new Quiz(rows[0]);
+    }
+    catch (err) {
+      throw new Error('An issue occured. Try again later');
+    }
+  }
+
   static async deleteById(id) {
     try {
       const { rows } = await Database.query(queries.deleteQuizById, [id]);

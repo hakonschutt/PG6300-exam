@@ -1,11 +1,15 @@
 const Match = require('../socket/Match');
+const Quiz = require('../database/models/Quiz');
 
 exports.findPendingGames = async (req, res) => {
   try {
     const matches = Match.getPendingGames();
 
     if (matches.length === 0) {
+      const quiz = await Quiz.getRandomQuiz();
+
       const match = new Match({
+        quizId: quiz.quizId,
         partyLeaderId: req.user.userId,
         activePlayerIds: [req.user]
       }).save();
@@ -18,6 +22,7 @@ exports.findPendingGames = async (req, res) => {
     return res.status(200).send(currentUserIsOwner || matches);
   }
   catch (err) {
+    console.log(err);
     return res.status(400).send();
   }
 };

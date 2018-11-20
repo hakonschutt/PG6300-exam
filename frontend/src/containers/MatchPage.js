@@ -53,10 +53,14 @@ class MatchPage extends Component<Props, *> {
 			const res = await axios.get('/api/v1/games');
 
 			if (Array.isArray(res.data)) {
-				this.setState({
-					isSelected: false,
-					games: res.data,
-				});
+				if (res.data.length === 1) {
+					this.props.history.push(`/match/${res.data[0].id}`);
+				} else {
+					this.setState({
+						isSelected: false,
+						games: res.data,
+					});
+				}
 			} else {
 				this.props.history.push(`/match/${res.data.id}`);
 			}

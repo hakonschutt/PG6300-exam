@@ -37,8 +37,7 @@ const initWebsockets = (app, session) => {
       socket.join(matchId);
 
       try {
-        // const match = await socketActions.getUpdatedMatch(matchId, socket.user);
-        const match = null;
+        const match = await socketActions.getUpdatedMatch(matchId, socket.user);
 
         io.to(matchId).emit('match_update', match);
       }
@@ -48,13 +47,26 @@ const initWebsockets = (app, session) => {
         });
       }
 
+      socket.on('start_match', async () => {
+        try {
+          const match = Match.findById(matchId);
+
+          if (match) {
+            const newMatch = await match.startGame(socket.user.userId);
+
+            io.to(matchId).emit('match_update', newMatch);
+          }
+        }
+        catch (err) {
+          io.to(matchId).emit('match_error', { error: 'Could not start match' });
+        }
+      });
+
       socket.on('answer_question', (time, answer) => {});
 
       socket.on('next_question', () => {});
 
       socket.on('finish_game', () => {});
-
-      socket.on('start_game', () => {});
 
       socket.on('disconnect', () => {
         socket.to(matchId).emit('user_leave', socket.user);

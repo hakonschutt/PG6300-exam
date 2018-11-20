@@ -39,8 +39,8 @@ class GameStarter extends Component<Props, *> {
 
 		try {
 			const res = await axios.post('/api/v1/games', {
-				...values,
 				...this.props.info,
+				...values,
 			});
 
 			this.props.history.push(`/match/${res.data.id}`);

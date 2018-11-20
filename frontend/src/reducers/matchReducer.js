@@ -1,31 +1,12 @@
 import { UPDATE_MATCH, PAUSE_MATCH } from '@actions/types';
 
 const defaultState = {
-	title: 'null',
-	status: 'active',
+	title: null,
+	status: 'pending',
 	quizId: null,
-	currentQuestion: {
-		question: 'Test wuestion',
-		answers: ['Test', 'Test', 'Test', 'Test'],
-	},
-	partyLeaderId: 1,
-	activePlayers: [
-		{
-			userId: 1,
-			name: 'Test',
-			score: 90,
-		},
-		{
-			userId: 2,
-			name: 'Test',
-			score: 120,
-		},
-		{
-			userId: 3,
-			name: 'Test',
-			score: 100,
-		},
-	],
+	currentQuestion: null,
+	partyLeaderId: null,
+	activePlayers: [],
 };
 
 export default function(state = defaultState, action) {

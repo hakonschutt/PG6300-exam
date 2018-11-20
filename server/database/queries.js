@@ -56,6 +56,9 @@ module.exports = {
   updateQuiz: `
     UPDATE quizzes SET title = $2, published = $3 WHERE quiz_id = $1
   `,
+  getRandomQuiz: `
+    SELECT * FROM quizzes ORDER BY random() LIMIT 1
+  `,
   deleteQuizById: `
     DELETE FROM quizzes WHERE quiz_id = $1 returning quiz_id
   `,
@@ -87,8 +90,14 @@ module.exports = {
   findQustionsByQuizId: `
     SELECT * FROM questions WHERE quiz_id = $1 LIMIT $2 OFFSET $3 ORDER BY order_in_quiz ASC
   `,
+  findNextQuestion: `
+    SELECT * FROM questions WHERE quiz_id = $1 ORDER BY order_in_quiz ASC LIMIT 1 OFFSET $2
+  `,
   findAllQuestions: `
     SELECT * FROM questions LIMIT $1 OFFSET $2
+  `,
+  countQuestionByQuizId: `
+  SELECT COUNT(*) FROM questions WHERE quiz_id = $1
   `,
   updateQuestion: `
     UPDATE questions
