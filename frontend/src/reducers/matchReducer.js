@@ -1,23 +1,12 @@
 import { FETCH_MATCH_INFO, NEW_MATCH_USER } from '@actions/types';
 
 const defaultState = {
-	title: 'dummy',
-	status: 'finished',
+	title: null,
+	status: null,
 	quizId: null,
 	currentQuestion: null,
 	partyLeaderId: null,
-	activePlayers: [
-		{
-			userId: 321,
-			name: 'Tst',
-			score: 100,
-		},
-		{
-			userId: 123,
-			name: 'HMM',
-			score: 80,
-		},
-	],
+	activePlayers: [],
 };
 
 export default function(state = defaultState, action) {

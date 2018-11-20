@@ -10,12 +10,13 @@ type Props = {
 	currentMatch: Object,
 	setupSocketConnection: Function,
 	history: Object,
+	match: Object,
 };
 
 class ActiveMatchPage extends Component<Props, *> {
 	componentDidMount() {
-		// const { match, setupSocketConnection, history } = this.props;
-		// setupSocketConnection(history, match.params.socketId);
+		const { match, setupSocketConnection, history } = this.props;
+		setupSocketConnection(history, match.params.matchId);
 	}
 
 	render() {

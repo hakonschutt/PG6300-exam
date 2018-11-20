@@ -47,7 +47,7 @@ class AppRoutes extends Component<Props, *> {
 							component={loadablePage(() => import('@containers/MatchPage'))}
 						/>
 						<Route
-							path="/match/:socketId"
+							path="/match/:matchId"
 							component={loadablePage(() =>
 								import('@containers/ActiveMatchPage')
 							)}
