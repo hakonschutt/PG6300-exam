@@ -68,6 +68,12 @@ docker-compose up --build -V
 
 or you can run `npm run dev` which will start the docker script for you.
 
+The site can be accessed at:
+
+```
+http://localhost:8080
+```
+
 ### Structure
 
 The project follows a traditional enterprise structure for the react app.
