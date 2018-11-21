@@ -6,7 +6,7 @@ const optimizationConfig = require('./webpack.opt.config');
 
 const productionConfiguration = {
   output: {
-    publicPath: "/"
+    publicPath: "/public/"
   },
   mode: process.env.NODE_ENV
 }
