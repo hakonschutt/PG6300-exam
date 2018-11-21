@@ -85,14 +85,14 @@ const initWebsockets = (app, session) => {
           const match = Match.findById(matchId);
 
           if (match) {
+            let status = 'pause';
             if (match.questionNumber === match.questionCount) {
-              match.status = 'finished';
-            }
-            else {
-              match.status = 'pause';
+              status = 'finished';
             }
 
-            io.to(matchId).emit('match_update', match);
+            const newMatch = match.setStatus(status);
+
+            io.to(matchId).emit('match_update', newMatch);
           }
         }
         catch (err) {
@@ -100,13 +100,12 @@ const initWebsockets = (app, session) => {
         }
       });
 
-      socket.on('next_question', () => {
+      socket.on('next_question', async () => {
         try {
-          const match = Match.findById(matchId);
+          const match = await Match.findById(matchId);
 
           if (match) {
-            const newMatch = match.getNextQuestion();
-            newMatch.status = 'active';
+            const newMatch = await match.getNextQuestion();
 
             io.to(matchId).emit('match_update', newMatch);
           }

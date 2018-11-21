@@ -17,7 +17,7 @@ class Match {
     this.title = title;
     this.quizId = quizId;
     this.currentQuestion = currentQuestion;
-    this.questionNumber = 1;
+    this.questionNumber = 0;
     this.questionCount = 0;
     this.partyLeaderId = partyLeaderId;
     this.status = status;
@@ -64,20 +64,24 @@ class Match {
 
   async getNextQuestion() {
     try {
-      const { questionId, question, answers } = await Question.getNextQuestion(
-        this.quizId,
-        this.questionNumber
-      );
+      const next = await Question.getNextQuestion(this.quizId, this.questionNumber);
 
-      this.currentQuestion = { questionId, question, answers };
+      if (next) {
+        const { questionId, question, answers } = next;
+        this.currentQuestion = { questionId, question, answers };
 
-      this.questionNumber = this.questionNumber + 1;
+        this.questionNumber = this.questionNumber + 1;
+        this.status = 'active';
+      }
+      else {
+        this.currentQuestion = null;
+        this.status = 'finished';
+      }
     }
     catch (err) {
       throw new Error('Could not find questions');
     }
 
-    this.status = 'active';
     matches.saveMatch(this);
 
     return this;
@@ -100,10 +104,17 @@ class Match {
     return this.activePlayers.some(player => player.userId === user.userId);
   }
 
+  setStatus(status) {
+    this.status = status;
+
+    matches.saveMatch(this);
+
+    return this;
+  }
+
   async updatePlayerScore(userId, data) {
     try {
       const isCorrect = await Question.validateAnswer(this.currentQuestion.questionId, data.index);
-      console.log('###############', isCorrect);
 
       if (isCorrect) {
         this.activePlayers = this.activePlayers.map((player) => {

@@ -133,11 +133,14 @@ class Question {
   static async getNextQuestion(quizId, offset = 0) {
     try {
       const { rows } = await Database.query(queries.findNextQuestion, [quizId, offset]);
-      console.log(rows);
+
+      if (rows.length === 0) {
+        return null;
+      }
+
       return new Question(rows[0]);
     }
     catch (err) {
-      console.log(err);
       throw new Error('An issue occured. Try again later');
     }
   }
