@@ -37,8 +37,10 @@ Add any extra feature relevant to such type of system. This is going to be very 
 - [x] Local database with Docker
 - [x] Simple postgres ORM
 - [x] Deployment to cloud provider [website](https://web-api-exam.herokuapp.com/)
+- [x] Implemented Travis CI for continuous integration and continuous delivery
 - [x] Added testSetup with one simple test case _for future development_
-- [x] Added full webpack setup with production optimisation
+- [x] Added full webpack setup with production optimisation including image handler
+- [x] Added Sass for better style structure
 - [x] Lazy loaded pages with chunk hash for better user experience with lower loadtime
 - [x] Full developer setup with prettier and eslint
 - [x] REST endpoints for POST and DELETE for quiz
