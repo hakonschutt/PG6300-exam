@@ -56,6 +56,18 @@ The user can also setup its own quiz.
 - [ ] Add live chat in match
 - [ ] Add global chat for non-matched players for planing
 
+### Running Project
+
+The project uses docker compose to run the in development. There is a script setup in the `package.json` that will init docker-compose.
+
+You can run the command to start the server
+
+```
+docker-compose up --build -V
+```
+
+or you can run `npm run dev` which will start the docker script for you.
+
 ### Structure
 
 The project follows a traditional enterprise structure for the react app.
@@ -92,10 +104,6 @@ server/
   tests/            -> Test files
 ```
 
-### Routes
-
-### Technologies
-
 ### Database
 
 The application uses a postgres database. I have implemented a simple ORM system on the server side to make for a better development experience. This ensures that i can use static methods to query the table, and object method to alter the entry.
@@ -121,3 +129,19 @@ The database includes 3 tables that have respective ORM classes.
 | questions | question_id | quiz_id |
 
 #### Login info
+
+User 1
+
+```javascript
+name: 'John doe',
+email: 'john@doe.no',
+password: 'admin'
+```
+
+User 2
+
+```javascript
+name: 'Doe John',
+email: 'doe@john.no',
+password: 'admin'
+```

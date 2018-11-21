@@ -55,21 +55,9 @@ module.exports = {
         }).save();
 
         await new User({
-          name: 'AA',
-          email: 'a',
-          password: 'a'
-        }).save();
-
-        await new User({
-          name: 'BB',
-          email: 'b',
-          password: 'b'
-        }).save();
-
-        await new User({
-          name: 'CC',
-          email: 'c',
-          password: 'c'
+          name: 'Doe John',
+          email: 'doe@john.no',
+          password: 'admin'
         }).save();
 
         await initQuizzes(user);
