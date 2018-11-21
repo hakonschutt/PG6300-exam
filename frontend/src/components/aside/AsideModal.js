@@ -12,6 +12,7 @@ const transitionOptions = {
 	transitionLeaveTimeout: 500,
 };
 
+// @flow
 type Props = {
 	aside: String,
 	closeAside: Function,

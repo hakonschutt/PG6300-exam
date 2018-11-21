@@ -4,6 +4,7 @@ import NameSettings from './subs/NameSettings';
 import EmailSettings from './subs/EmailSettings';
 import PasswordSettings from './subs/PasswordSettings';
 
+// @flow
 type Props = {
 	aside: String,
 };

@@ -1,7 +1,7 @@
 import React from 'react';
 
 const QuizDeleter = () => {
-	return null;
+	return <div className="delet" />;
 };
 
 export default QuizDeleter;

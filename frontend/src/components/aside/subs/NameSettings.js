@@ -21,6 +21,7 @@ const formFields = [
 	},
 ];
 
+// @flow
 type Props = {
 	closePopupModal: Function,
 	updateUserInfo: Function,

@@ -47,13 +47,17 @@ export const startMatch = () => dispatch => {
 	dispatch({ type: START_MATCH, payload: null });
 };
 
+/* eslint-disable */
 export const finishedQuestion = () => dispatch => {
 	socket.emit('finished_question', {});
 };
+/* eslint-enable */
 
+/* eslint-disable */
 export const getNextQuestion = () => dispatch => {
 	socket.emit('next_question', {});
 };
+/* eslint-enable */
 
 export const answerMatchQuestion = data => dispatch => {
 	socket.emit('answer_question', JSON.stringify(data));
