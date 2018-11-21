@@ -21,9 +21,34 @@ Add any extra feature relevant to such type of system. This is going to be very 
 
 #### Implemented
 
+- [x] Homepage
+- [x] React-Router with minimum 2 pages beside homepage
+- [x] Stateful page (`MatchPage`)
+- [x] RESTful API with at least one GET and on POST
+- [x] Frontend uses REST api
+- [x] Websockets
+- [x] session based authentication
+
 #### Extra
 
+- [x] Nginx with proxy between frontend and api in development
+- [x] Nps for better script handling
+- [x] Full implementation of docker-compose
+- [x] Local database with Docker
+- [x] Simple postgres ORM
+- [x] Deployment to cloud provider [website](https://web-api-exam.herokuapp.com/)
+- [x] Added testSetup with one simple test case _for future development_
+- [x] Added full webpack setup with production optimisation
+- [x] Lazy loaded pages with chunk hash for better user experience with lower loadtime
+- [x] Full developer setup with prettier and eslint
+- [x] REST endpoints for POST and DELETE for quiz
+- [x] Flow for type checking. This is static checked instead of at runtime like PropTypes (Will therefor not increase code size in production) [Read more](https://reactjs.org/docs/static-type-checking.html)
+
 #### Future
+
+- [ ] Add create quiz component
+- [ ] Add live chat in match
+- [ ] Add global chat for non-matched players for planing
 
 ### Structure
 
@@ -31,7 +56,7 @@ Add any extra feature relevant to such type of system. This is going to be very 
 
 ### Database
 
-The application uses a postgres database. I have implemented a simple ORM system on the server side to make for a better development expreience. This insues that i can use static methods to query the table, and object method to alter the entry.
+The application uses a postgres database. I have implemented a simple ORM system on the server side to make for a better development experience. This ensures that i can use static methods to query the table, and object method to alter the entry.
 
 ##### Create user
 
