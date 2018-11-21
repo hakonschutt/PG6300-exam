@@ -9,8 +9,7 @@ module.exports = {
   },
   output: {
     filename: '[name].[chunkhash].bundle.js',
-    path: path.join(__dirname, "..", "public"),
-    publicPath: '/'
+    path: path.join(__dirname, "..", "public")
   },
   resolve: {
     alias: {
