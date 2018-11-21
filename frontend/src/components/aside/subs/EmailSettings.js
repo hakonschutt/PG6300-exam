@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 
-import { updateUserInfo, closePopup } from '@actions';
+import { updateUserInfo, closeAside } from '@actions';
 import { FormBuilder } from '@components';
 import { formValidation } from '@utils';
 
@@ -23,7 +23,7 @@ const formFields = [
 
 // @flow
 type Props = {
-	closePopupModal: Function,
+	closeAside: Function,
 	updateUserInfo: Function,
 	handleSubmit: Function,
 	initialize: Function,
@@ -50,7 +50,7 @@ class EmailSettings extends Component<Props, *> {
 
 	async onSubmit(fields) {
 		this.setState({ loading: true });
-		const { updateUserInfo, closePopup } = this.props;
+		const { updateUserInfo, closeAside } = this.props;
 
 		updateUserInfo(fields, err => {
 			if (err) {
@@ -59,7 +59,7 @@ class EmailSettings extends Component<Props, *> {
 					loading: false,
 				});
 			} else {
-				closePopup();
+				closeAside();
 			}
 		});
 	}
@@ -101,6 +101,6 @@ export default reduxForm({
 })(
 	connect(
 		mapStateToProps,
-		{ closePopup, updateUserInfo }
+		{ closeAside, updateUserInfo }
 	)(EmailSettings)
 );
