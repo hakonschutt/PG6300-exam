@@ -1,7 +1,10 @@
 const path = require("path");
 const webpack = require("webpack");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+
+const devMode = ['development', 'docker'].includes(process.env.NODE_ENV);
 
 module.exports = {
   entry: {
@@ -33,10 +36,11 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: ["css-loader", "sass-loader"]
-        })
+        use: [
+          devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+          "css-loader",
+          "sass-loader"
+        ]
       },
       {
         test: /\.(jpe?g|png|svg)$/,
@@ -48,7 +52,9 @@ module.exports = {
     ]
   },
   plugins: [
-    new ExtractTextPlugin({ filename: 'style.css' }),
+    new MiniCssExtractPlugin({
+      filename: '[name].css'
+    }),
     new HtmlWebPackPlugin({
       minify: true,
       title: "PG6300",
