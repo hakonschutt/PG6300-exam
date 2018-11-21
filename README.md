@@ -17,7 +17,11 @@ Add any extra feature relevant to such type of system. This is going to be very 
 
 ## Questions!
 
-### What it does
+Questions is a simple quiz application that utilizes websocket for live quiz update. It allows users to follow several use cases.
+
+There is a simple action for joining games. If there are noe games pending the user will create a new match with a random quiz. If multiple quizzes are pending the user is granted the option to quiz which quiz they want to enter.
+
+The user can also setup its own quiz.
 
 #### Implemented
 
@@ -53,6 +57,42 @@ Add any extra feature relevant to such type of system. This is going to be very 
 - [ ] Add global chat for non-matched players for planing
 
 ### Structure
+
+The project follows a traditional enterprise structure for the react app.
+
+React structure:
+
+```
+frontend/
+src/                -> Main src folder for react files
+    actions/        -> Redux actions
+    assets/         -> images and style files
+    components/     -> react components
+    constants/      -> constants element like router and app wrapper
+    containers/     -> React pages
+    hocs/           -> high order components
+    reducers/       -> Redux reducers
+    utils/          -> utils files
+  tests/            -> Test files
+  web/              -> Static webfiles (favicon and html)
+  webpack/          -> webpack configs
+```
+
+Server structure:
+
+```
+server/
+  config/           -> config files for initializing different application components
+  database/         -> Database files for models and seeds
+  handlers/         -> Routes handlers
+  middlewares/      -> express middlewares used for authentication
+  routes/           -> REST endpoints
+  services/         -> Application services
+  sockets/          -> Socket configurations
+  tests/            -> Test files
+```
+
+### Routes
 
 ### Technologies
 

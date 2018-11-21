@@ -16,7 +16,7 @@ module.exports = {
 					minSize: 0
 				},
 				vendor: {
-					test: /node_modules/,
+					test: /[\\/]node_modules[\\/].*js/,
 					chunks: "initial",
 					name: "vendor",
 					priority: 10,

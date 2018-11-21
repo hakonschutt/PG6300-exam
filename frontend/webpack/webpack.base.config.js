@@ -34,11 +34,8 @@ module.exports = {
       {
         test: /\.scss$/,
         use: ExtractTextPlugin.extract({
-          fallback: "style-loader",
-          use: [
-            { loader: "css-loader", options: { minimize: true } },
-            { loader: "sass-loader" }
-          ]
+          fallback: 'style-loader',
+          use: ["css-loader", "sass-loader"]
         })
       },
       {
@@ -51,11 +48,7 @@ module.exports = {
     ]
   },
   plugins: [
-    new ExtractTextPlugin({
-      filename: "style.css",
-      allChunks: true,
-      ignoreOrder: true
-    }),
+    new ExtractTextPlugin({ filename: 'style.css' }),
     new HtmlWebPackPlugin({
       minify: true,
       title: "PG6300",
